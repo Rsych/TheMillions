@@ -87,7 +87,6 @@ extension HomeView {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
-                //                                .padding(.bottom)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
             }
         }
@@ -97,7 +96,6 @@ extension HomeView {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
-                //                                .padding(.bottom)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
             }
         }
