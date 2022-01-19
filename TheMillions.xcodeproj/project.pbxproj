@@ -17,6 +17,9 @@
 		71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FCD279853070039036A /* CircleButtonAnimationView.swift */; };
 		71810FD1279855210039036A /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD0279855210039036A /* CoinModel.swift */; };
 		71810FD327985B330039036A /* CoinRowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD227985B330039036A /* CoinRowListView.swift */; };
+		71810FD52798816E0039036A /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD42798816E0039036A /* Double.swift */; };
+		71810FD8279882010039036A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD7279882010039036A /* Constants.swift */; };
+		71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD92798831F0039036A /* Bundle-Version.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		71810FCD279853070039036A /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		71810FD0279855210039036A /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		71810FD227985B330039036A /* CoinRowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowListView.swift; sourceTree = "<group>"; };
+		71810FD42798816E0039036A /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		71810FD7279882010039036A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		71810FD92798831F0039036A /* Bundle-Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Version.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 		71810FB027984B0D0039036A /* TheMillions */ = {
 			isa = PBXGroup;
 			children = (
+				71810FD6279881F60039036A /* Constants */,
 				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				71810FCF2798550D0039036A /* Models */,
 				71810FC9279850180039036A /* Components */,
@@ -87,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				71810FC027984D330039036A /* Color.swift */,
+				71810FD42798816E0039036A /* Double.swift */,
+				71810FD92798831F0039036A /* Bundle-Version.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,6 +148,14 @@
 				71810FD0279855210039036A /* CoinModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71810FD6279881F60039036A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				71810FD7279882010039036A /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,10 +231,13 @@
 				71810FD327985B330039036A /* CoinRowListView.swift in Sources */,
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
+				71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
 				71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */,
+				71810FD8279882010039036A /* Constants.swift in Sources */,
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */,
+				71810FD52798816E0039036A /* Double.swift in Sources */,
 				71810FD1279855210039036A /* CoinModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +382,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.naolin.TheMillions;
 				PRODUCT_NAME = "The Millions - Portfolio manager";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -392,7 +412,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.naolin.TheMillions;
 				PRODUCT_NAME = "The Millions - Portfolio manager";
 				SWIFT_EMIT_LOC_STRINGS = YES;
