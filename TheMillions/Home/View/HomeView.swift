@@ -51,16 +51,6 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HomeView()
-                .navigationBarHidden(true)
-        }
-        .environmentObject(HomeViewModel())
-    }
-}
-
 extension HomeView {
     private var homeHeader: some View {
         HStack {
@@ -100,5 +90,16 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            HomeView()
+//                .preferredColorScheme(.dark)
+                .navigationBarHidden(true)
+        }
+        .environmentObject(HomeViewModel())
     }
 }

@@ -37,7 +37,7 @@ extension CoinRowListView {
                 .font(.caption)
                 .foregroundColor(.theme.secondaryText)
                 .frame(minWidth: 30)
-            Circle()
+            CoinImageView(coin: coin)
                 .frame(width: 30, height: 30)
             Text(coin.symbol)
                 .font(.headline)
@@ -70,6 +70,6 @@ extension CoinRowListView {
 struct CoinRowListView_Previews: PreviewProvider {
     static var previews: some View {
         CoinRowListView(coin: Coin.example, showHoldingsColumn: true)
-        
+            .preferredColorScheme(.dark)
     }
 }

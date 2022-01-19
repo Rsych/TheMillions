@@ -22,6 +22,7 @@ class CoinImageService {
     }
     
     private func getCoinImage() {
+        
         guard let url = URL(string: coin.image) else { return }
         
         imageSubscription = NetworkManager.download(url: url)
