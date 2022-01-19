@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     // MARK: - Properties
+    @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio: Bool = false
     
     // MARK: - Body
@@ -19,11 +20,33 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             // MARK: - Content
-            VStack {
-                homeHeader
-                
-                Spacer()
-            } //: VStack
+            GeometryReader { geo in
+                VStack {
+                    homeHeader
+                    
+                    HStack {
+                        Text("Coin")
+                        Spacer()
+                        if showPortfolio {
+                            Text("Holdings")
+                        }
+                        Text("Price")
+                            .frame(width: geo.size.width / 3, alignment: .trailing)
+                    } //: HStack
+                    .font(.caption)
+                    .foregroundColor(.theme.secondaryText)
+                    .padding(.horizontal)
+                    
+                    if !showPortfolio {
+                        allCoinList
+                            .transition(.move(edge: .leading))
+                    } else {
+                        portfolioCoinList
+                            .transition(.move(edge: .trailing))
+                    }
+                    Spacer()
+                } //: VStack
+            } //: Geo
         } //: ZStack
     }
 }
@@ -34,6 +57,7 @@ struct HomeView_Previews: PreviewProvider {
             HomeView()
                 .navigationBarHidden(true)
         }
+        .environmentObject(HomeViewModel())
     }
 }
 
@@ -58,5 +82,25 @@ extension HomeView {
                 }
         }
         .padding(.horizontal)
+    }
+    private var allCoinList: some View {
+        List {
+            ForEach(vm.allCoins) { coin in
+                CoinRowListView(coin: coin, showHoldingsColumn: false)
+                //                                .padding(.bottom)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
+            }
+        }
+        .listStyle(.plain)
+    }
+    private var portfolioCoinList: some View {
+        List {
+            ForEach(vm.portfolioCoins) { coin in
+                CoinRowListView(coin: coin, showHoldingsColumn: true)
+                //                                .padding(.bottom)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
+            }
+        }
+        .listStyle(.plain)
     }
 }

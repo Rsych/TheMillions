@@ -22,9 +22,10 @@ struct CoinRowListView: View {
                     centerColumn
                 }
                 rightColumn
-                    .frame(width: geo.size.width / 3)
+                    .frame(width: geo.size.width / 3, alignment: .trailing)
                 //                .frame(width: UIScreen.main.bounds.width / 3)
             } //: HStack
+            .padding(.bottom)
             .font(.subheadline)
         } //: Geo
     }

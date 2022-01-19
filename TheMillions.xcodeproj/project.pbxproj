@@ -20,6 +20,8 @@
 		71810FD52798816E0039036A /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD42798816E0039036A /* Double.swift */; };
 		71810FD8279882010039036A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD7279882010039036A /* Constants.swift */; };
 		71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD92798831F0039036A /* Bundle-Version.swift */; };
+		71E897F527988BB400BCEB89 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E897F427988BB400BCEB89 /* HomeViewModel.swift */; };
+		71E897F8279891EC00BCEB89 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E897F7279891EB00BCEB89 /* CoinDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		71810FD42798816E0039036A /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		71810FD7279882010039036A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71810FD92798831F0039036A /* Bundle-Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Version.swift"; sourceTree = "<group>"; };
+		71E897F427988BB400BCEB89 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		71E897F7279891EB00BCEB89 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 		71810FB027984B0D0039036A /* TheMillions */ = {
 			isa = PBXGroup;
 			children = (
+				71E897F6279891D100BCEB89 /* Services */,
 				71810FD6279881F60039036A /* Constants */,
 				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				71810FCF2798550D0039036A /* Models */,
@@ -121,6 +126,7 @@
 		71810FC627984F220039036A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				71E897F427988BB400BCEB89 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +162,14 @@
 				71810FD7279882010039036A /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		71E897F6279891D100BCEB89 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				71E897F7279891EB00BCEB89 /* CoinDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +247,10 @@
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
 				71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
+				71E897F8279891EC00BCEB89 /* CoinDataService.swift in Sources */,
 				71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */,
 				71810FD8279882010039036A /* Constants.swift in Sources */,
+				71E897F527988BB400BCEB89 /* HomeViewModel.swift in Sources */,
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */,
 				71810FD52798816E0039036A /* Double.swift in Sources */,
@@ -375,7 +391,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,7 +421,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
