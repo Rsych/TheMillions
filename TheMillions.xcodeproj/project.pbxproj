@@ -11,6 +11,7 @@
 		71810FB427984B0D0039036A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FB327984B0D0039036A /* ContentView.swift */; };
 		71810FB627984B0D0039036A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71810FB527984B0D0039036A /* Assets.xcassets */; };
 		71810FB927984B0D0039036A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71810FB827984B0D0039036A /* Preview Assets.xcassets */; };
+		71810FC127984D330039036A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FC027984D330039036A /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		71810FB327984B0D0039036A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		71810FB527984B0D0039036A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71810FB827984B0D0039036A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		71810FC027984D330039036A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		71810FB027984B0D0039036A /* TheMillions */ = {
 			isa = PBXGroup;
 			children = (
+				71810FBF27984D250039036A /* Extensions */,
 				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				71810FB327984B0D0039036A /* ContentView.swift */,
 				71810FB527984B0D0039036A /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				71810FB827984B0D0039036A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71810FBF27984D250039036A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71810FC027984D330039036A /* Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
+				71810FC127984D330039036A /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
