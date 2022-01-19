@@ -15,6 +15,7 @@
 		71810FC827984F480039036A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FC727984F480039036A /* HomeView.swift */; };
 		71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FCB2798504A0039036A /* CircleButtonView.swift */; };
 		71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FCD279853070039036A /* CircleButtonAnimationView.swift */; };
+		71810FD1279855210039036A /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD0279855210039036A /* CoinModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		71810FC727984F480039036A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		71810FCB2798504A0039036A /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		71810FCD279853070039036A /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
+		71810FD0279855210039036A /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
+				71810FCF2798550D0039036A /* Models */,
 				71810FC9279850180039036A /* Components */,
 				71810FC427984F190039036A /* Home */,
 				71810FBF27984D250039036A /* Extensions */,
@@ -125,6 +128,14 @@
 				71810FCD279853070039036A /* CircleButtonAnimationView.swift */,
 			);
 			path = CircleButton;
+			sourceTree = "<group>";
+		};
+		71810FCF2798550D0039036A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71810FD0279855210039036A /* CoinModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */,
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */,
+				71810FD1279855210039036A /* CoinModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
