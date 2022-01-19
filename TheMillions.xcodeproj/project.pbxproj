@@ -16,6 +16,7 @@
 		71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FCB2798504A0039036A /* CircleButtonView.swift */; };
 		71810FCE279853070039036A /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FCD279853070039036A /* CircleButtonAnimationView.swift */; };
 		71810FD1279855210039036A /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD0279855210039036A /* CoinModel.swift */; };
+		71810FD327985B330039036A /* CoinRowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD227985B330039036A /* CoinRowListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		71810FCB2798504A0039036A /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		71810FCD279853070039036A /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		71810FD0279855210039036A /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		71810FD227985B330039036A /* CoinRowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				71810FC727984F480039036A /* HomeView.swift */,
+				71810FD227985B330039036A /* CoinRowListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71810FD327985B330039036A /* CoinRowListView.swift in Sources */,
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
