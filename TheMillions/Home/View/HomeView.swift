@@ -24,6 +24,8 @@ struct HomeView: View {
                 VStack {
                     homeHeader
                     
+                    SearchBarView(searchText: $vm.searchText)
+                    
                     HStack {
                         Text("Coin")
                         Spacer()
