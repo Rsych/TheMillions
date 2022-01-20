@@ -24,6 +24,8 @@ struct HomeView: View {
                 VStack {
                     homeHeader
                     
+                    SearchBarView(searchText: $vm.searchText)
+                    
                     HStack {
                         Text("Coin")
                         Spacer()
@@ -48,16 +50,6 @@ struct HomeView: View {
                 } //: VStack
             } //: Geo
         } //: ZStack
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HomeView()
-                .navigationBarHidden(true)
-        }
-        .environmentObject(HomeViewModel())
     }
 }
 
@@ -87,7 +79,6 @@ extension HomeView {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
-                //                                .padding(.bottom)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
             }
         }
@@ -97,10 +88,20 @@ extension HomeView {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
-                //                                .padding(.bottom)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
             }
         }
         .listStyle(.plain)
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            HomeView()
+//                .preferredColorScheme(.dark)
+                .navigationBarHidden(true)
+        }
+        .environmentObject(HomeViewModel())
     }
 }
