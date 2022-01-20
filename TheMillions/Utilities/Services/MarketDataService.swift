@@ -16,9 +16,9 @@ class MarketDataService {
     var marketDataSubscription: AnyCancellable?
     
     init() {
-        getDoins()
+        getData()
     }
-    private func getDoins() {
+    private func getData() {
         guard let url = URL(string: "https://api.coingecko.com/api/v3/global") else { return }
         
         marketDataSubscription = NetworkManager.download(url: url)
