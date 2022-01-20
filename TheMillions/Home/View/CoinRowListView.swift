@@ -39,7 +39,8 @@ extension CoinRowListView {
                 .frame(minWidth: 30)
             CoinImageView(coin: coin)
                 .frame(width: 30, height: 30)
-            Text(coin.symbol)
+            Text(coin.symbol.uppercased())
+                
                 .font(.headline)
                 .padding(.leading, 5)
                 .foregroundColor(.theme.accent)
