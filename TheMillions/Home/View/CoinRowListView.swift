@@ -71,6 +71,7 @@ extension CoinRowListView {
 struct CoinRowListView_Previews: PreviewProvider {
     static var previews: some View {
         CoinRowListView(coin: Coin.example, showHoldingsColumn: true)
+            .previewLayout(.sizeThatFits)
             .preferredColorScheme(.dark)
     }
 }

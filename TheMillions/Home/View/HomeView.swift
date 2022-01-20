@@ -23,7 +23,7 @@ struct HomeView: View {
             GeometryReader { geo in
                 VStack {
                     homeHeader
-                    
+                    HomeStatsView(showPortFolio: $showPortfolio)
                     SearchBarView(searchText: $vm.searchText)
                     
                     HStack {
