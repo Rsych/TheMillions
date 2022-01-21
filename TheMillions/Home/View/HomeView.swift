@@ -39,6 +39,15 @@ struct HomeView: View {
                         }
                         Text("Price")
                             .frame(width: geo.size.width / 3, alignment: .trailing)
+                        Button {
+                            withAnimation(.linear(duration: 2.0)) {
+                                vm.reloadData()
+                            }
+                        } label: {
+                            Image(systemName: "goforward")
+                        }
+                        .rotationEffect(Angle(degrees: vm.isLoading ? 360: 0), anchor: .center)
+
                     } //: HStack
                     .font(.caption)
                     .foregroundColor(.theme.secondaryText)
