@@ -27,6 +27,7 @@ extension Portfolio {
         let record = CKRecord(recordType: "Portfolio", recordID: recordID)
         record["coinID"] = coinID
         record["amount"] = amount
+        
         return record
     }
 }

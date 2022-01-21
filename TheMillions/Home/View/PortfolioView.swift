@@ -12,7 +12,7 @@ struct PortfolioView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var vm: HomeViewModel
     @State private var selectedCoin: Coin? = nil
-    @State private var amount: String = ""
+    @State private var quantyHoldings: String = ""
     @State private var showSave = false
     // MARK: - Body
     var body: some View {
@@ -56,7 +56,7 @@ struct PortfolioView: View {
             HStack(spacing: 10) {
                 Image(systemName: "checkmark")
                     .opacity(showSave ? 1.0 : 0.0)
-                if (selectedCoin != nil && selectedCoin?.currentHoldings != Double(amount)) {
+                if (selectedCoin != nil && selectedCoin?.currentHoldings != Double(quantyHoldings)) {
                     Button {
                         saveButtonPressed()
                     } label: {
@@ -68,7 +68,7 @@ struct PortfolioView: View {
         }
     }
     private func getCurrentValue() -> Double {
-        if let amount = Double(amount) {
+        if let amount = Double(quantyHoldings) {
             return amount * (selectedCoin?.currentPrice ?? 0)
         }
         return 0
@@ -78,12 +78,12 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                                selectedCoin = coin
+                                updateSelectedCoin(coin: coin)
                             }
                         }
                         .opacity(selectedCoin?.id == coin.id ? 0.5 : 1)
@@ -100,6 +100,15 @@ extension PortfolioView {
             .padding(.leading)
         } //: ScrollView
     }
+    private func updateSelectedCoin(coin: Coin) {
+        selectedCoin = coin
+        if let portfolioCoin = vm.portfolioCoins.first(where: { $0.id == coin.id } ),
+           let amount = portfolioCoin.currentHoldings {
+            quantyHoldings = "\(amount)"
+        } else {
+            quantyHoldings = ""
+        }
+    }
     
     private var portfolioInputSection: some View {
         VStack(spacing: 20) {
@@ -112,7 +121,7 @@ extension PortfolioView {
             HStack {
                 Text("Holdings:")
                 Spacer()
-                TextField("Ex: 1.4", text: $amount)
+                TextField("Ex: 1.4", text: $quantyHoldings)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
             } //: HStack
@@ -129,7 +138,7 @@ extension PortfolioView {
     }
     private func saveButtonPressed() {
         guard let coin = selectedCoin else { return }
-        guard let amount = Double(amount) else { return }
+        guard let amount = Double(quantyHoldings) else { return }
         
         // save to portfolio
         vm.updatePortfolio(coin: coin, amount: amount)

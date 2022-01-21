@@ -20,7 +20,7 @@ extension PortfolioDataService {
             case .success:
                 print("Success")
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                print("Cloud Error: \(error.localizedDescription)")
             }
         }
         CKContainer.default().publicCloudDatabase.add(operation)
