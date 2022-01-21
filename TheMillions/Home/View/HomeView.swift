@@ -62,6 +62,25 @@ struct HomeView: View {
                     }
                     Spacer()
                 } //: VStack
+                .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+                            .onEnded { value in
+                    let horizontalAmount = value.translation.width as CGFloat
+                    let verticalAmount = value.translation.height as CGFloat
+                    if abs(horizontalAmount) > abs(verticalAmount) {
+                        print(horizontalAmount < 0 ? "left swipe" : "right swipe")
+                        if horizontalAmount < 0 {
+                            withAnimation(.spring()) {
+                                showPortfolio = true
+                            }
+                        } else {
+                            withAnimation(.spring()) {
+                                showPortfolio = false
+                            }
+                        }
+                    } else {
+                        print(verticalAmount < 0 ? "up swipe" : "down swipe")
+                    }
+                }) //: swipe left & right with animation
             } //: Geo
         } //: ZStack
     }
