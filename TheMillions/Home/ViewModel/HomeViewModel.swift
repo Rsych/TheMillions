@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class HomeViewModel: ObservableObject {
     
@@ -14,7 +15,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
-    
+    @Published var isLoading:Bool = false
     @Published var searchText: String = ""
     
     private let coinDataService = CoinDataService()
@@ -55,6 +56,8 @@ class HomeViewModel: ObservableObject {
             .map(mapGlobal)
             .sink { [weak self] returnedStats in
                 self?.stats = returnedStats
+                // reload data and set false
+                self?.isLoading = false
             }
             .store(in: &cancellable)
     } //: Subscriber
@@ -124,5 +127,10 @@ class HomeViewModel: ObservableObject {
         return stats
     }
     
-    
+    func reloadData() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+        UINotificationFeedbackGenerator().notificationOccurred(.warning)
+    }
 }
