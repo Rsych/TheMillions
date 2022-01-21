@@ -11,8 +11,8 @@ import CloudKit
 
 extension PortfolioDataService {
     func uploadToiCloud(_ portfolio: Portfolio) {
-        let record = portfolio.prepareCloudRecords()
-        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        let records = portfolio.prepareCloudRecords()
+        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
         operation.savePolicy = .allKeys
 
         operation.modifyRecordsResultBlock = { result in

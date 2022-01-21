@@ -28,7 +28,7 @@ struct HomeStatsView: View {
 
 struct HomeStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeStatsView(showPortFolio: .constant(false))
+        HomeStatsView(showPortFolio: .constant(true))
             .previewLayout(.sizeThatFits)
             .environmentObject(HomeViewModel())
     }

@@ -16,18 +16,19 @@ extension Portfolio {
         amount
     }
     
-    func prepareCloudRecords() -> CKRecord {
+    func prepareCloudRecords() -> [CKRecord] {
         // to prepare to go to iCloud
         // CKRecord is same as NSManagedObject for CloudKit, send and receive data using it
 
         // Created unique identifier
+        var records: [CKRecord] = []
         let recordName = objectID.uriRepresentation().absoluteString
         let recordID = CKRecord.ID(recordName: recordName)
         // Matches to CoreData entities "Project"
         let record = CKRecord(recordType: "Portfolio", recordID: recordID)
         record["coinID"] = coinID
         record["amount"] = amount
-        
-        return record
+        records.append(record)
+        return records
     }
 }
