@@ -12,12 +12,17 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio: Bool = false
     
+    @State private var showPortfolioView: Bool = false
     // MARK: - Body
     var body: some View {
         ZStack {
             // MARK: - Background
             Color.theme.background
                 .ignoresSafeArea()
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView()
+                        .environmentObject(vm)
+                }
             
             // MARK: - Content
             GeometryReader { geo in
@@ -58,6 +63,11 @@ extension HomeView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none, value: 0)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    }
+                }
                 .background(CircleButtonAnimationView(animation: $showPortfolio))
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live prices")
