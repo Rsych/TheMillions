@@ -33,6 +33,11 @@ struct PortfolioView: View {
                 dismissButton()
                 saveButton()
             }
+            .onChange(of: vm.searchText) { newValue in
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+            }
         } //: NavView
     }
     
@@ -124,9 +129,10 @@ extension PortfolioView {
     }
     private func saveButtonPressed() {
         guard let coin = selectedCoin else { return }
+        guard let amount = Double(amount) else { return }
         
         // save to portfolio
-        
+        vm.updatePortfolio(coin: coin, amount: amount)
         // show check
         withAnimation(.easeIn) {
             showSave = true
