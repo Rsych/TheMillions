@@ -47,7 +47,7 @@ struct HomeView: View {
                             Image(systemName: "goforward")
                         }
                         .rotationEffect(Angle(degrees: vm.isLoading ? 360: 0), anchor: .center)
-
+                        
                     } //: HStack
                     .font(.caption)
                     .foregroundColor(.theme.secondaryText)
@@ -100,6 +100,11 @@ extension HomeView {
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
             }
+        } //: List
+        .refreshable {
+            withAnimation(.linear(duration: 2.0)) {
+                vm.reloadData()
+            }
         }
         .listStyle(.plain)
     }
@@ -108,6 +113,11 @@ extension HomeView {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
+            }
+        } //: List
+        .refreshable {
+            withAnimation(.linear(duration: 2.0)) {
+                vm.reloadData()
             }
         }
         .listStyle(.plain)
@@ -118,7 +128,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView()
-//                .preferredColorScheme(.dark)
+            //                .preferredColorScheme(.dark)
                 .navigationBarHidden(true)
         }
         .environmentObject(HomeViewModel())
