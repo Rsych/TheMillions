@@ -125,9 +125,10 @@ struct HomeView: View {
                 }) //: swipe left & right with animation
             } //: Geo
         } //: ZStack
+        // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
-                DetailView(coin: $selectedCoin)
+                DetailLoadingView(coin: $selectedCoin)
             }, label: {
                 EmptyView()
             })
