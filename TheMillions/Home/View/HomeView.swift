@@ -10,9 +10,14 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - Properties
     @EnvironmentObject private var vm: HomeViewModel
+    
     @State private var showPortfolio: Bool = false
     
     @State private var showPortfolioView: Bool = false
+    
+    @State private var selectedCoin: Coin? = nil
+    @State private var showDetailView: Bool = false
+    
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -120,6 +125,13 @@ struct HomeView: View {
                 }) //: swipe left & right with animation
             } //: Geo
         } //: ZStack
+        .background(
+            NavigationLink(isActive: $showDetailView, destination: {
+                DetailView(coin: $selectedCoin)
+            }, label: {
+                EmptyView()
+            })
+        ) //: Background
     }
 }
 
@@ -155,7 +167,10 @@ extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
-            }
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
+            } //: Loop
         } //: List
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
@@ -164,12 +179,16 @@ extension HomeView {
         }
         .listStyle(.plain)
     }
+    
     private var portfolioCoinList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
-            }
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
+            } //: Loop
         } //: List
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
@@ -177,6 +196,12 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+    }
+    
+    // segue to detail view
+    private func segue(coin: Coin) {
+        selectedCoin = coin
+        showDetailView.toggle()
     }
 }
 
