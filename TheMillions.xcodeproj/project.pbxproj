@@ -10,6 +10,7 @@
 		711CAE562799577300445A98 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711CAE552799577300445A98 /* SearchBarView.swift */; };
 		7146BF26279DEA6500FBB88E /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF25279DEA6500FBB88E /* LineChartView.swift */; };
 		7146BF28279DEF0100FBB88E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF27279DEF0100FBB88E /* Date.swift */; };
+		7146BF2A279DF71F00FBB88E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF29279DF71F00FBB88E /* String.swift */; };
 		71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FB127984B0D0039036A /* TheMillionsApp.swift */; };
 		71810FB427984B0D0039036A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FB327984B0D0039036A /* ContentView.swift */; };
 		71810FB627984B0D0039036A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71810FB527984B0D0039036A /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		711CAE552799577300445A98 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7146BF25279DEA6500FBB88E /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		7146BF27279DEF0100FBB88E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		7146BF29279DF71F00FBB88E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		71810FAE27984B0D0039036A /* The Millions - Portfolio manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Millions - Portfolio manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71810FB127984B0D0039036A /* TheMillionsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMillionsApp.swift; sourceTree = "<group>"; };
 		71810FB327984B0D0039036A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				71810FD92798831F0039036A /* Bundle-Version.swift */,
 				71C9380327995AF7003B3235 /* UIApplication.swift */,
 				7146BF27279DEF0100FBB88E /* Date.swift */,
+				7146BF29279DF71F00FBB88E /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7146BF2A279DF71F00FBB88E /* String.swift in Sources */,
 				71C9380A279A0619003B3235 /* StatsView.swift in Sources */,
 				71810FD327985B330039036A /* CoinRowListView.swift in Sources */,
 				71E898072798BF4A00BCEB89 /* LocalFilemanager.swift in Sources */,

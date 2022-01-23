@@ -27,6 +27,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     // MARK: - Properties
     @StateObject private var vm: DetailViewModel
+    @State private var showMore = false
     private let column: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -45,10 +46,15 @@ struct DetailView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     overViewTitle
                     Divider()
+                    
+                    description
+                    
                     overViewGrid
                     additionalTitles
                     Divider()
                     additionalViewGrid
+                    websiteLinks
+                    
                 } //: VStack
                 .padding()
             } //: VStack
@@ -78,6 +84,29 @@ extension DetailView {
             .bold()
             .foregroundColor(.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    private var description: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription,
+               !coinDescription.isEmpty {
+                VStack {
+                Text(coinDescription.description)
+                        .lineLimit(showMore ? nil : 3)
+                    .font(.callout)
+                    .foregroundColor(.theme.secondaryText)
+                    Button {
+                        withAnimation(.easeInOut){ showMore.toggle() }
+                    } label: {
+                        Text(showMore ? "Show less…": "Read more…")
+                            .tint(.blue)
+                            .font(.caption)
+                            .padding(.vertical, 4)
+                    } //: Button
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } //: VStack
+                
+            }
+        } //: ZStack
     }
     
     private var additionalTitles: some View {
@@ -111,5 +140,21 @@ extension DetailView {
             CoinImageView(coin: vm.coin)
                 .frame(width: 25, height: 25)
         } //: HStack
+    }
+    
+    private var websiteLinks: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            if let websiteString = vm.websiteURL,
+               let url = URL(string: websiteString) {
+                Link("Website", destination: url)
+            }
+            if let redditString = vm.redditURL,
+               let url = URL(string: redditString) {
+                Link("Reddit", destination: url)
+            }
+        } //: VStack
+        .tint(.blue)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.headline)
     }
 }
