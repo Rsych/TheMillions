@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false
     
     @State private var showPortfolioView: Bool = false
+    @State private var showSettingsView: Bool = false
     
     @State private var selectedCoin: Coin? = nil
     @State private var showDetailView: Bool = false
@@ -144,6 +145,9 @@ extension HomeView {
                 .onTapGesture {
                     if showPortfolio {
                         showPortfolioView.toggle()
+                    } else {
+                        showSettingsView.toggle()
+                        print(showSettingsView)
                     }
                 }
                 .background(CircleButtonAnimationView(animation: $showPortfolio))

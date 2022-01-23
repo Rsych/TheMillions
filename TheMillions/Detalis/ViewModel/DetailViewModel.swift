@@ -12,6 +12,10 @@ class DetailViewModel: ObservableObject {
     
     @Published var overviewStats: [Stats] = []
     @Published var additionalStats: [Stats] = []
+    @Published var coinDescription: String? = nil
+    @Published var websiteURL: String? = nil
+    @Published var redditURL: String? = nil
+    @Published var twitterURL: String? = nil
     
     @Published var coin: Coin
     private let coinDetailService: CoinDetailService
@@ -32,6 +36,16 @@ class DetailViewModel: ObservableObject {
                 print("Received coin detail data")
                 self?.overviewStats = returnedArrays.overview
                 self?.additionalStats = returnedArrays.additional
+            }
+            .store(in: &cancellables)
+        
+        // subscribe details
+        coinDetailService.$coinDetails
+            .sink { [weak self] returnedCoinDetail in
+                self?.coinDescription = returnedCoinDetail?.readableDescription
+                self?.websiteURL = returnedCoinDetail?.links?.homepage?.first
+                self?.redditURL = returnedCoinDetail?.links?.subredditURL
+                self?.twitterURL = returnedCoinDetail?.links?.twitterScreenName
             }
             .store(in: &cancellables)
     }

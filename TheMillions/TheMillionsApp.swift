@@ -21,6 +21,9 @@ struct TheMillionsApp: App {
                     .navigationBarHidden(true)
             }
             .environmentObject(vm)
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                vm.appReloaded()
+            }
         }
     }
 }
