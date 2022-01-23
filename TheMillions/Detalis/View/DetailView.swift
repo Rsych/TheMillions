@@ -38,7 +38,6 @@ struct DetailView: View {
             if let coin = coin {
                 Text(coin.name)
             }
-            
         } //: ZStack
     }
 }
