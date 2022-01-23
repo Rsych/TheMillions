@@ -27,6 +27,7 @@ struct CoinRowListView: View {
             } //: HStack
             .padding(.bottom)
             .font(.subheadline)
+            .background(Color.theme.background.opacity(0.01))
         } //: Geo
     }
 }

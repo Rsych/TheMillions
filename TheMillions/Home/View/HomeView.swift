@@ -10,9 +10,14 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - Properties
     @EnvironmentObject private var vm: HomeViewModel
+    
     @State private var showPortfolio: Bool = false
     
     @State private var showPortfolioView: Bool = false
+    
+    @State private var selectedCoin: Coin? = nil
+    @State private var showDetailView: Bool = false
+    
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -32,13 +37,50 @@ struct HomeView: View {
                     SearchBarView(searchText: $vm.searchText)
                     
                     HStack {
-                        Text("Coin")
+                        HStack(spacing: 4) {
+                            Text("Coin")
+                            Image(systemName: "chevron.down")
+                                .opacity((vm.sortOptions == .rank || vm.sortOptions == .rankReversed) ? 1.0 : 0.0)
+                                .rotationEffect(Angle(degrees: vm.sortOptions == .rank ? 0 : 180))
+                        } //: HStack
+                        .onTapGesture {
+                            withAnimation {
+                                vm.sortOptions = vm.sortOptions == .rank ? .rankReversed : .rank
+                            }
+                            //                            // Same but short
+                            //                            if vm.sortOptions == .rank {
+                            //                                vm.sortOptions = .rankReversed
+                            //                            } else {
+                            //                                vm.sortOptions = .rank
+                            //                            }
+                        }
                         Spacer()
                         if showPortfolio {
-                            Text("Holdings")
+                            HStack(spacing: 4) {
+                                Text("Holdings")
+                                Image(systemName: "chevron.down")
+                                    .opacity((vm.sortOptions == .holdings || vm.sortOptions == .holdingsReversed) ? 1.0 : 0.0)
+                                    .rotationEffect(Angle(degrees: vm.sortOptions == .holdings ? 0 : 180))
+                            } //: HStack
+                            .onTapGesture {
+                                withAnimation {
+                                    vm.sortOptions = vm.sortOptions == .holdings ? .holdingsReversed : .holdings
+                                }
+                            }
                         }
-                        Text("Price")
-                            .frame(width: geo.size.width / 3, alignment: .trailing)
+                        HStack(spacing: 4) {
+                            Text("Price")
+                            Image(systemName: "chevron.down")
+                                .opacity((vm.sortOptions == .price || vm.sortOptions == .priceReversed) ? 1.0 : 0.0)
+                                .rotationEffect(Angle(degrees: vm.sortOptions == .price ? 0 : 180))
+                        } //: HStack
+                        .onTapGesture {
+                            withAnimation {
+                                vm.sortOptions = vm.sortOptions == .price ? .priceReversed : .price
+                            }
+                        }
+                        
+                        .frame(width: geo.size.width / 3, alignment: .trailing)
                         Button {
                             withAnimation(.linear(duration: 2.0)) {
                                 vm.reloadData()
@@ -83,6 +125,14 @@ struct HomeView: View {
                 }) //: swipe left & right with animation
             } //: Geo
         } //: ZStack
+        // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
+        .background(
+            NavigationLink(isActive: $showDetailView, destination: {
+                DetailLoadingView(coin: $selectedCoin)
+            }, label: {
+                EmptyView()
+            })
+        ) //: Background
     }
 }
 
@@ -118,7 +168,10 @@ extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
-            }
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
+            } //: Loop
         } //: List
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
@@ -127,12 +180,16 @@ extension HomeView {
         }
         .listStyle(.plain)
     }
+    
     private var portfolioCoinList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
-            }
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
+            } //: Loop
         } //: List
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
@@ -140,6 +197,12 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+    }
+    
+    // segue to detail view
+    private func segue(coin: Coin) {
+        selectedCoin = coin
+        showDetailView.toggle()
     }
 }
 
