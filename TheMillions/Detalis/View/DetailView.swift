@@ -39,20 +39,26 @@ struct DetailView: View {
     // MARK: - Body
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Hi")
-                    .frame(height: 150)
-                
-                overViewTitle
-                Divider()
-                overViewGrid
-                additionalTitles
-                Divider()
-                additionalViewGrid
+            VStack {
+                LineChartView(coin: vm.coin)
+                    .padding(.vertical)
+                VStack(alignment: .leading, spacing: 20) {
+                    overViewTitle
+                    Divider()
+                    overViewGrid
+                    additionalTitles
+                    Divider()
+                    additionalViewGrid
+                } //: VStack
+                .padding()
             } //: VStack
-            .padding()
         } //: ScrollView
         .navigationTitle(vm.coin.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                navTrailingItem
+            }
+        }
     }
 }
 
@@ -96,5 +102,14 @@ extension DetailView {
                 StatsView(stats: stat)
             }
         } //: LazyVGrid
+    }
+    private var navTrailingItem: some View {
+        HStack {
+            Text(vm.coin.symbol.uppercased())
+                .font(.headline)
+                .foregroundColor(.theme.secondaryText)
+            CoinImageView(coin: vm.coin)
+                .frame(width: 25, height: 25)
+        } //: HStack
     }
 }

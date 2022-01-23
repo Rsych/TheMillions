@@ -13,7 +13,7 @@ struct StatsView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack(alignment: .trailing, spacing: 4) {
+        VStack(alignment: .leading, spacing: 4) {
             Text(stats.title)
                 .font(.caption)
                 .foregroundColor(.theme.secondaryText)
