@@ -169,4 +169,10 @@ class HomeViewModel: ObservableObject {
         marketDataService.getData()
         UINotificationFeedbackGenerator().notificationOccurred(.warning)
     }
+    
+    func appReloaded() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+    }
 }
