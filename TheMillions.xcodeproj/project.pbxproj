@@ -11,6 +11,7 @@
 		7146BF26279DEA6500FBB88E /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF25279DEA6500FBB88E /* LineChartView.swift */; };
 		7146BF28279DEF0100FBB88E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF27279DEF0100FBB88E /* Date.swift */; };
 		7146BF2A279DF71F00FBB88E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF29279DF71F00FBB88E /* String.swift */; };
+		7146BF2E279DFACD00FBB88E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF2D279DFACD00FBB88E /* SettingsView.swift */; };
 		71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FB127984B0D0039036A /* TheMillionsApp.swift */; };
 		71810FB427984B0D0039036A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FB327984B0D0039036A /* ContentView.swift */; };
 		71810FB627984B0D0039036A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71810FB527984B0D0039036A /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		7146BF25279DEA6500FBB88E /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		7146BF27279DEF0100FBB88E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7146BF29279DF71F00FBB88E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		7146BF2D279DFACD00FBB88E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		71810FAE27984B0D0039036A /* The Millions - Portfolio manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Millions - Portfolio manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71810FB127984B0D0039036A /* TheMillionsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMillionsApp.swift; sourceTree = "<group>"; };
 		71810FB327984B0D0039036A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7146BF2B279DFAB800FBB88E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7146BF2C279DFAC400FBB88E /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7146BF2C279DFAC400FBB88E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7146BF2D279DFACD00FBB88E /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		71810FA527984B0D0039036A = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +153,7 @@
 				71E897FA27989E4F00BCEB89 /* Utilities */,
 				71810FC427984F190039036A /* Home */,
 				71902DCB279C66A900A107C9 /* Detalis */,
+				7146BF2B279DFAB800FBB88E /* Settings */,
 				71810FC9279850180039036A /* Components */,
 				71810FBF27984D250039036A /* Extensions */,
 				71810FB527984B0D0039036A /* Assets.xcassets */,
@@ -375,6 +394,7 @@
 				71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
 				71E897F8279891EC00BCEB89 /* CoinDataService.swift in Sources */,
+				7146BF2E279DFACD00FBB88E /* SettingsView.swift in Sources */,
 				71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */,
 				71C9380427995AF7003B3235 /* UIApplication.swift in Sources */,
 				71810FD8279882010039036A /* Constants.swift in Sources */,
