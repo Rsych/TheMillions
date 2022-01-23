@@ -37,6 +37,14 @@ class DetailViewModel: ObservableObject {
     }
     
     private func mapStats(coinDetailModel: CoinDetail?, coinModel: Coin) -> (overview: [Stats], additional: [Stats]) {
+        
+        let overviewArray = createOverviewArray(coinModel: coinModel)
+        let additionalArray = createAdditionalArray(coinDetailModel: coinDetailModel, coinModel: coinModel)
+        
+        return (overviewArray, additionalArray)
+    }
+    
+    func createOverviewArray(coinModel: Coin) -> [Stats] {
         // Overview
         let price = coinModel.currentPrice.currencyTo2Digits()
         let pricePercentChange = coinModel.priceChangePercentage24H
@@ -55,7 +63,10 @@ class DetailViewModel: ObservableObject {
         let overviewArray: [Stats] = [
             pricePercentStat, marketCapPercentStat, rankStat, volumeStat
         ]
-        
+        return overviewArray
+    }
+    
+    func createAdditionalArray(coinDetailModel: CoinDetail?, coinModel: Coin) -> [Stats] {
         // Additional
         let high = coinModel.high24H?.currencyTo2Digits() ?? "N/A"
         let highStats = Stats(title: "24 High", value: high)
@@ -82,8 +93,6 @@ class DetailViewModel: ObservableObject {
             highStats, lowStats, priceChangeStat, marketCapChangeStat, blockStat, hashingStat
         ]
         
-        return (overviewArray, additionalArray)
+        return additionalArray
     }
-    
-    
 }
