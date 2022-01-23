@@ -35,8 +35,9 @@ struct LineChartView: View {
         chartView
             .frame(height: 200)
             .background(chartBackground)
-            .overlay(alignment: .leading) { chartYAxis }
+            .overlay(alignment: .leading) { chartYAxis.padding(.horizontal, 4) }
             chartDate
+                .padding(.horizontal, 4)
         } //: VStack
         .font(.caption)
         .foregroundColor(.theme.secondaryText)

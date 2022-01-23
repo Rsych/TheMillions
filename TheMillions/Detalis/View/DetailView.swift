@@ -39,18 +39,19 @@ struct DetailView: View {
     // MARK: - Body
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Chart")
-                    .frame(height: 150)
-                
-                overViewTitle
-                Divider()
-                overViewGrid
-                additionalTitles
-                Divider()
-                additionalViewGrid
+            VStack {
+                LineChartView(coin: vm.coin)
+                    .padding(.vertical)
+                VStack(alignment: .leading, spacing: 20) {
+                    overViewTitle
+                    Divider()
+                    overViewGrid
+                    additionalTitles
+                    Divider()
+                    additionalViewGrid
+                } //: VStack
+                .padding()
             } //: VStack
-            .padding()
         } //: ScrollView
         .navigationTitle(vm.coin.name)
         .toolbar {
@@ -106,7 +107,7 @@ extension DetailView {
         HStack {
             Text(vm.coin.symbol.uppercased())
                 .font(.headline)
-            .foregroundColor(.theme.secondaryText)
+                .foregroundColor(.theme.secondaryText)
             CoinImageView(coin: vm.coin)
                 .frame(width: 25, height: 25)
         } //: HStack
