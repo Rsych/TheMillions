@@ -8,6 +8,21 @@
 import Foundation
 import Combine
 
-class DetailViewModel {
+class DetailViewModel: ObservableObject {
+    private let coinDetailService: CoinDetailService
+    private var cancellables = Set<AnyCancellable>()
     
+    init(coin: Coin) {
+        self.coinDetailService = CoinDetailService(coin: coin)
+        self.addSubscribers()
+    }
+    
+    private func addSubscribers() {
+        coinDetailService.$coinDetails
+            .sink { returnedCoinDetails in
+                print("Received coin detail data")
+                print(returnedCoinDetails)
+            }
+            .store(in: &cancellables)
+    }
 }
