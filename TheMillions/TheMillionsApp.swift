@@ -15,6 +15,8 @@ struct TheMillionsApp: App {
     @Environment(\.scenePhase) var scenePhase
     @State var blurRadius: CGFloat = 0
     
+    @State private var showLaunchView: Bool = true
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
@@ -23,12 +25,23 @@ struct TheMillionsApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                HomeView()
-                    .navigationBarHidden(true)
-                    .environmentObject(vm)
-                    .environmentObject(appLockVM)
-                    .environmentObject(dataController)
+            ZStack {
+                NavigationView {
+                    HomeView()
+                        .navigationBarHidden(true)
+                        .environmentObject(vm)
+                        .environmentObject(appLockVM)
+                        .environmentObject(dataController)
+                } //: NavView
+                .navigationViewStyle(.stack)
+                ZStack {
+                    if showLaunchView {
+                        LaunchView(showLaunchView: $showLaunchView)
+                            .transition(.move(edge: .leading))
+                    }
+                } //: ZStack
+                // to fix ZStack display error
+                .zIndex(2.0)
             }
             
             .blur(radius: blurRadius)

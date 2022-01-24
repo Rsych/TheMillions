@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo.png",
+      "filename" : "theMillionsLogo1024.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "theMillionsLogo1024@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "theMillionsLogo1024@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
