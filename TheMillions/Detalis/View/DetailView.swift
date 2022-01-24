@@ -18,6 +18,7 @@ struct DetailLoadingView: View {
         ZStack {
             if let coin = coin {
                 DetailView(coin: coin)
+                    .zIndex(1.0)
             }
             
         } //: ZStack
@@ -54,7 +55,6 @@ struct DetailView: View {
                     Divider()
                     additionalViewGrid
                     websiteLinks
-                    
                 } //: VStack
                 .padding()
             } //: VStack

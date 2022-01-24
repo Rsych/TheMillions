@@ -100,7 +100,8 @@ extension PortfolioView {
             .padding(.leading)
         } //: ScrollView
     }
-    private func updateSelectedCoin(coin: Coin) {
+//    private func updateSelectedCoin(coin: Coin) {
+    func updateSelectedCoin(coin: Coin) {
         selectedCoin = coin
         if let portfolioCoin = vm.portfolioCoins.first(where: { $0.id == coin.id } ),
            let amount = portfolioCoin.currentHoldings {

@@ -26,8 +26,8 @@ struct HomeView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
+//        ZStack {
+//            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
         ZStack {
             // MARK: - Background
             Color.theme.background
@@ -79,19 +79,20 @@ struct HomeView: View {
                 }) //: swipe left & right with animation
                 .padding(.top)
             } //: Geo
+            .zIndex(1.0)
             
         } //: ZStack
-        .padding(.top)
-            } else {
-                LockedView()
-                }
-        } //: ZStack appLock
-        .onAppear {
-            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
-            if appLockVM.isAppLockEnabled {
-                appLockVM.appLockValidation()
-            }
-        }
+//        .padding(.top)
+//            } else {
+//                LockedView()
+//                }
+//        } //: ZStack appLock
+//        .onAppear {
+//            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
+//            if appLockVM.isAppLockEnabled {
+//                appLockVM.appLockValidation()
+//            }
+//        }
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {

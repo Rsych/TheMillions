@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                                <rect key="frame" x="0.0" y="876" width="414" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8Q-Ci-vj2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="8PW-Ee-SKP">
+                                        <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="5eP-f5-HCC"/>
+                                            <constraint firstAttribute="height" constant="100" id="B8X-2M-58t"/>
+                                            <constraint firstAttribute="width" constant="100" id="FEl-S5-Ija"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="d7b-02-VEI"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="LogoColor"/>
+                                <constraints>
+                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerX" secondItem="K8Q-Ci-vj2" secondAttribute="centerX" id="Ue4-f9-Vcf"/>
+                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerY" secondItem="K8Q-Ci-vj2" secondAttribute="centerY" id="rsk-aQ-7AT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Py-f2-59T"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K8Q-Ci-vj2" firstAttribute="leading" secondItem="7Py-f2-59T" secondAttribute="leading" id="2oC-7y-9w9"/>
+                            <constraint firstItem="K8Q-Ci-vj2" firstAttribute="trailing" secondItem="7Py-f2-59T" secondAttribute="trailing" id="9bE-jU-vG7"/>
+                            <constraint firstAttribute="trailing" secondItem="K8Q-Ci-vj2" secondAttribute="trailing" id="Ssm-88-YYy"/>
+                            <constraint firstItem="K8Q-Ci-vj2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TuQ-B7-N2H"/>
+                            <constraint firstItem="K8Q-Ci-vj2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="uFC-Nu-jV7"/>
+                            <constraint firstAttribute="bottom" secondItem="K8Q-Ci-vj2" secondAttribute="bottom" id="wi7-0Z-iq2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="100" height="100"/>
+        <namedColor name="LogoColor">
+            <color red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
