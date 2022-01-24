@@ -23,6 +23,7 @@ struct LaunchView: View {
             Color.theme.logoColor
                 .ignoresSafeArea()
             Image("logo")
+                .offset(y: -7)
             //                .resizable()
             //                .frame(width: 100, height: 100)
             ZStack {

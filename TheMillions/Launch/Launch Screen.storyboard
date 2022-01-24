@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
                                 <rect key="frame" x="0.0" y="876" width="414" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -38,8 +37,8 @@
                                 </subviews>
                                 <color key="backgroundColor" name="LogoColor"/>
                                 <constraints>
-                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerX" secondItem="K8Q-Ci-vj2" secondAttribute="centerX" id="Ue4-f9-Vcf"/>
-                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerY" secondItem="K8Q-Ci-vj2" secondAttribute="centerY" id="rsk-aQ-7AT"/>
+                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerX" secondItem="K8Q-Ci-vj2" secondAttribute="centerX" id="OyT-9k-1qC"/>
+                                    <constraint firstItem="8PW-Ee-SKP" firstAttribute="centerY" secondItem="K8Q-Ci-vj2" secondAttribute="centerY" id="R2G-We-nsL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -48,8 +47,11 @@
                         <constraints>
                             <constraint firstItem="K8Q-Ci-vj2" firstAttribute="leading" secondItem="7Py-f2-59T" secondAttribute="leading" id="2oC-7y-9w9"/>
                             <constraint firstItem="K8Q-Ci-vj2" firstAttribute="trailing" secondItem="7Py-f2-59T" secondAttribute="trailing" id="9bE-jU-vG7"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="K8Q-Ci-vj2" secondAttribute="leading" id="M7h-Dt-DsR"/>
                             <constraint firstAttribute="trailing" secondItem="K8Q-Ci-vj2" secondAttribute="trailing" id="Ssm-88-YYy"/>
                             <constraint firstItem="K8Q-Ci-vj2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TuQ-B7-N2H"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="trailing" secondItem="K8Q-Ci-vj2" secondAttribute="trailing" id="lQa-or-er8"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="top" secondItem="7Py-f2-59T" secondAttribute="top" constant="832" id="m9W-6B-QnO"/>
                             <constraint firstItem="K8Q-Ci-vj2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="uFC-Nu-jV7"/>
                             <constraint firstAttribute="bottom" secondItem="K8Q-Ci-vj2" secondAttribute="bottom" id="wi7-0Z-iq2"/>
                         </constraints>
