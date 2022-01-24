@@ -106,7 +106,7 @@ struct HomeView: View {
 extension HomeView {
     private var homeHeader: some View {
         HStack {
-            CircleButtonView(iconName: showPortfolio ? "plus" : "info")
+            CircleButtonView(iconName: showPortfolio ? "plus" : "gear")
                 .animation(.none, value: 0)
                 .onTapGesture {
                     if showPortfolio {
