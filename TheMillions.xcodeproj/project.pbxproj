@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7113A3EC279EA30A0034A1AB /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 7113A3EB279EA30A0034A1AB /* BetterSafariView */; };
+		7113A3F1279EA3700034A1AB /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3ED279EA3700034A1AB /* SecurityView.swift */; };
+		7113A3F2279EA3700034A1AB /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3EE279EA3700034A1AB /* MailView.swift */; };
+		7113A3F3279EA3700034A1AB /* CustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3EF279EA3700034A1AB /* CustomizationView.swift */; };
+		7113A3F4279EA3700034A1AB /* SystemThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F0279EA3700034A1AB /* SystemThemeManager.swift */; };
+		7113A3F7279EA3D70034A1AB /* Settings-Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */; };
+		7113A3FB279EA4630034A1AB /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */; };
+		7113A3FC279EA4630034A1AB /* LockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FA279EA4630034A1AB /* LockedView.swift */; };
+		7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */; };
+		7113A400279EAA510034A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FF279EAA510034A1AB /* AppDelegate.swift */; };
 		711CAE562799577300445A98 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711CAE552799577300445A98 /* SearchBarView.swift */; };
 		7146BF26279DEA6500FBB88E /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF25279DEA6500FBB88E /* LineChartView.swift */; };
 		7146BF28279DEF0100FBB88E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF27279DEF0100FBB88E /* Date.swift */; };
@@ -52,6 +62,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7113A3ED279EA3700034A1AB /* SecurityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
+		7113A3EE279EA3700034A1AB /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		7113A3EF279EA3700034A1AB /* CustomizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizationView.swift; sourceTree = "<group>"; };
+		7113A3F0279EA3700034A1AB /* SystemThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemThemeManager.swift; sourceTree = "<group>"; };
+		7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings-Controller.swift"; sourceTree = "<group>"; };
+		7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
+		7113A3FA279EA4630034A1AB /* LockedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockedView.swift; sourceTree = "<group>"; };
+		7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
+		7113A3FF279EAA510034A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711CAE552799577300445A98 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7146BF25279DEA6500FBB88E /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		7146BF27279DEF0100FBB88E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -104,12 +123,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				71843BC8279ADEF3007F70F0 /* CloudKit.framework in Frameworks */,
+				7113A3EC279EA30A0034A1AB /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7113A3F5279EA3CA0034A1AB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7113A3F8279EA4630034A1AB /* AppLock */ = {
+			isa = PBXGroup;
+			children = (
+				7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */,
+				7113A3FA279EA4630034A1AB /* LockedView.swift */,
+			);
+			path = AppLock;
+			sourceTree = "<group>";
+		};
 		7146BF2B279DFAB800FBB88E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				7146BF2D279DFACD00FBB88E /* SettingsView.swift */,
+				7113A3EF279EA3700034A1AB /* CustomizationView.swift */,
+				7113A3EE279EA3700034A1AB /* MailView.swift */,
+				7113A3ED279EA3700034A1AB /* SecurityView.swift */,
+				7113A3F0279EA3700034A1AB /* SystemThemeManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,9 +187,12 @@
 		71810FB027984B0D0039036A /* TheMillions */ = {
 			isa = PBXGroup;
 			children = (
+				7113A3FF279EAA510034A1AB /* AppDelegate.swift */,
+				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
+				7113A3F5279EA3CA0034A1AB /* Controllers */,
+				7113A3F8279EA4630034A1AB /* AppLock */,
 				71E897F92798963300BCEB89 /* TheMillions.entitlements */,
 				71810FD7279882010039036A /* Constants.swift */,
-				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				71810FCF2798550D0039036A /* Models */,
 				71E897FA27989E4F00BCEB89 /* Utilities */,
 				71810FC427984F190039036A /* Home */,
@@ -174,6 +218,7 @@
 		71810FBF27984D250039036A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */,
 				71810FC027984D330039036A /* Color.swift */,
 				71810FD42798816E0039036A /* Double.swift */,
 				71810FD92798831F0039036A /* Bundle-Version.swift */,
@@ -328,6 +373,9 @@
 			dependencies = (
 			);
 			name = TheMillions;
+			packageProductDependencies = (
+				7113A3EB279EA30A0034A1AB /* BetterSafariView */,
+			);
 			productName = TheMillions;
 			productReference = 71810FAE27984B0D0039036A /* The Millions - Portfolio manager.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +404,9 @@
 				Base,
 			);
 			mainGroup = 71810FA527984B0D0039036A;
+			packageReferences = (
+				7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+			);
 			productRefGroup = 71810FAF27984B0D0039036A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -384,29 +435,37 @@
 			files = (
 				7146BF2A279DF71F00FBB88E /* String.swift in Sources */,
 				71C9380A279A0619003B3235 /* StatsView.swift in Sources */,
+				7113A3F2279EA3700034A1AB /* MailView.swift in Sources */,
 				71810FD327985B330039036A /* CoinRowListView.swift in Sources */,
 				71E898072798BF4A00BCEB89 /* LocalFilemanager.swift in Sources */,
+				7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */,
 				71902DD5279D683A00A107C9 /* CoinDetailService.swift in Sources */,
 				71843BCF279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift in Sources */,
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
+				7113A3F1279EA3700034A1AB /* SecurityView.swift in Sources */,
 				71C93810279A148D003B3235 /* MarketDataService.swift in Sources */,
+				7113A3F4279EA3700034A1AB /* SystemThemeManager.swift in Sources */,
 				71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */,
 				71810FB227984B0D0039036A /* TheMillionsApp.swift in Sources */,
 				71E897F8279891EC00BCEB89 /* CoinDataService.swift in Sources */,
 				7146BF2E279DFACD00FBB88E /* SettingsView.swift in Sources */,
+				7113A3FB279EA4630034A1AB /* AppLockViewModel.swift in Sources */,
 				71810FCC2798504A0039036A /* CircleButtonView.swift in Sources */,
 				71C9380427995AF7003B3235 /* UIApplication.swift in Sources */,
 				71810FD8279882010039036A /* Constants.swift in Sources */,
 				71E897F527988BB400BCEB89 /* HomeViewModel.swift in Sources */,
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71C9380C279A08E6003B3235 /* HomeStatsView.swift in Sources */,
+				7113A400279EAA510034A1AB /* AppDelegate.swift in Sources */,
+				7113A3F7279EA3D70034A1AB /* Settings-Controller.swift in Sources */,
 				71E897FC27989E7100BCEB89 /* NetworkManager.swift in Sources */,
 				71902DD3279D680F00A107C9 /* DetailViewModel.swift in Sources */,
 				711CAE562799577300445A98 /* SearchBarView.swift in Sources */,
 				71C93816279A1F27003B3235 /* CoinLogoView.swift in Sources */,
 				71E898032798B86300BCEB89 /* CoinImageVIewModel.swift in Sources */,
 				71C9380E279A127F003B3235 /* MarketData.swift in Sources */,
+				7113A3FC279EA4630034A1AB /* LockedView.swift in Sources */,
 				7146BF26279DEA6500FBB88E /* LineChartView.swift in Sources */,
 				71843BCB279ADF2E007F70F0 /* Portfolio.xcdatamodeld in Sources */,
 				71E897FF2798B65600BCEB89 /* CoinImageView.swift in Sources */,
@@ -418,6 +477,7 @@
 				7146BF28279DEF0100FBB88E /* Date.swift in Sources */,
 				71902DD1279D660300A107C9 /* CoinDetail.swift in Sources */,
 				71810FD1279855210039036A /* CoinModel.swift in Sources */,
+				7113A3F3279EA3700034A1AB /* CustomizationView.swift in Sources */,
 				71843BD1279AEA1E007F70F0 /* CoreDataHelper.swift in Sources */,
 				71C93812279A19A6003B3235 /* PortfolioView.swift in Sources */,
 				71843BCD279ADFA3007F70F0 /* PortfolioDataService.swift in Sources */,
@@ -555,6 +615,7 @@
 				DEVELOPMENT_TEAM = G6V85GALCN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need Face ID to unlock this App.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +649,7 @@
 				DEVELOPMENT_TEAM = G6V85GALCN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need Face ID to unlock this App.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -631,6 +693,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7113A3EB279EA30A0034A1AB /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		71843BC9279ADF2E007F70F0 /* Portfolio.xcdatamodeld */ = {

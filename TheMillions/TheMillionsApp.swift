@@ -10,17 +10,40 @@ import SwiftUI
 @main
 struct TheMillionsApp: App {
     @StateObject private var vm = HomeViewModel()
+    @StateObject var appLockVM = AppLockViewModel()
+    @StateObject var dataController: DataController
+    @Environment(\.scenePhase) var scenePhase
+    @State var blurRadius: CGFloat = 0
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
+        let dataController = DataController()
+        _dataController = StateObject(wrappedValue: dataController)
     }
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 HomeView()
                     .navigationBarHidden(true)
+                    .environmentObject(vm)
+                    .environmentObject(appLockVM)
+                    .environmentObject(dataController)
             }
-            .environmentObject(vm)
+            
+            .blur(radius: blurRadius)
+            .onChange(of: scenePhase, perform: { value in
+                switch value {
+                case .active :
+                    blurRadius = 0
+                case .background:
+                    appLockVM.isAppUnLocked = false
+                case .inactive:
+                    blurRadius = 5
+                @unknown default:
+                    print("unknown")
+                }
+            })
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                 vm.appReloaded()
             }
