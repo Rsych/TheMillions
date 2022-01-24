@@ -33,6 +33,7 @@ struct TheMillionsApp: App {
                         .environmentObject(appLockVM)
                         .environmentObject(dataController)
                 } //: NavView
+                .navigationViewStyle(.stack)
                 ZStack {
                     if showLaunchView {
                         LaunchView(showLaunchView: $showLaunchView)
