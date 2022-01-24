@@ -29,7 +29,8 @@ class NetworkManager {
         // already be on background
 //            .subscribe(on: DispatchQueue.global(qos: .default))
             .tryMap({ try handleURLResponse(output: $0, url: url) })
-// better go to main thread on each services
+            .retry(3)
+        // better go to main thread on each services
         //            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

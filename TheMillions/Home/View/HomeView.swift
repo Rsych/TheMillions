@@ -26,8 +26,8 @@ struct HomeView: View {
     
     // MARK: - Body
     var body: some View {
-//        ZStack {
-//            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
+        //        ZStack {
+        //            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
         ZStack {
             // MARK: - Background
             Color.theme.background
@@ -50,8 +50,14 @@ struct HomeView: View {
                         allCoinList
                             .transition(.move(edge: .leading))
                     } else {
-                        portfolioCoinList
-                            .transition(.move(edge: .trailing))
+                        ZStack(alignment: .top) {
+                            if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                                portfolioCoinEmpty
+                            } else {
+                                portfolioCoinList
+                            }
+                        } //: ZStack
+                        .transition(.move(edge: .trailing))
                     }
                     Spacer()
                 } //: VStack
@@ -82,17 +88,17 @@ struct HomeView: View {
             .zIndex(1.0)
             
         } //: ZStack
-//        .padding(.top)
-//            } else {
-//                LockedView()
-//                }
-//        } //: ZStack appLock
-//        .onAppear {
-//            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
-//            if appLockVM.isAppLockEnabled {
-//                appLockVM.appLockValidation()
-//            }
-//        }
+        //        .padding(.top)
+        //            } else {
+        //                LockedView()
+        //                }
+        //        } //: ZStack appLock
+        //        .onAppear {
+        //            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
+        //            if appLockVM.isAppLockEnabled {
+        //                appLockVM.appLockValidation()
+        //            }
+        //        }
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
@@ -228,6 +234,15 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+    }
+    
+    private var portfolioCoinEmpty: some View {
+        Text("Please add crypto assets to your portfolio. Click the + button to get started!")
+            .font(.callout)
+            .foregroundColor(.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(10)
     }
     
     // segue to detail view
