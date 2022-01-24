@@ -71,7 +71,7 @@ struct CustomizationView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar(content: {
             ToolbarItem(placement: .navigation) {
-                Text("More")
+                Text("Settings")
                     .font(.title)
             }
         })

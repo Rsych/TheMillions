@@ -11,6 +11,11 @@ struct HomeView: View {
     // MARK: - Properties
     @EnvironmentObject private var vm: HomeViewModel
     
+    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
+    @AppStorage("systemThemeEnabled") private var systemThemeEnabled = true
+    @EnvironmentObject private var appLockVM: AppLockViewModel
+    @EnvironmentObject var dataController: DataController
+    
     @State private var showPortfolio: Bool = false
     
     @State private var showPortfolioView: Bool = false
@@ -21,6 +26,8 @@ struct HomeView: View {
     
     // MARK: - Body
     var body: some View {
+        ZStack {
+            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
         ZStack {
             // MARK: - Background
             Color.theme.background
@@ -37,64 +44,7 @@ struct HomeView: View {
                     HomeStatsView(showPortFolio: $showPortfolio)
                     SearchBarView(searchText: $vm.searchText)
                     
-                    HStack {
-                        HStack(spacing: 4) {
-                            Text("Coin")
-                            Image(systemName: "chevron.down")
-                                .opacity((vm.sortOptions == .rank || vm.sortOptions == .rankReversed) ? 1.0 : 0.0)
-                                .rotationEffect(Angle(degrees: vm.sortOptions == .rank ? 0 : 180))
-                        } //: HStack
-                        .onTapGesture {
-                            withAnimation {
-                                vm.sortOptions = vm.sortOptions == .rank ? .rankReversed : .rank
-                            }
-                            //                            // Same but short
-                            //                            if vm.sortOptions == .rank {
-                            //                                vm.sortOptions = .rankReversed
-                            //                            } else {
-                            //                                vm.sortOptions = .rank
-                            //                            }
-                        }
-                        Spacer()
-                        if showPortfolio {
-                            HStack(spacing: 4) {
-                                Text("Holdings")
-                                Image(systemName: "chevron.down")
-                                    .opacity((vm.sortOptions == .holdings || vm.sortOptions == .holdingsReversed) ? 1.0 : 0.0)
-                                    .rotationEffect(Angle(degrees: vm.sortOptions == .holdings ? 0 : 180))
-                            } //: HStack
-                            .onTapGesture {
-                                withAnimation {
-                                    vm.sortOptions = vm.sortOptions == .holdings ? .holdingsReversed : .holdings
-                                }
-                            }
-                        }
-                        HStack(spacing: 4) {
-                            Text("Price")
-                            Image(systemName: "chevron.down")
-                                .opacity((vm.sortOptions == .price || vm.sortOptions == .priceReversed) ? 1.0 : 0.0)
-                                .rotationEffect(Angle(degrees: vm.sortOptions == .price ? 0 : 180))
-                        } //: HStack
-                        .onTapGesture {
-                            withAnimation {
-                                vm.sortOptions = vm.sortOptions == .price ? .priceReversed : .price
-                            }
-                        }
-                        
-                        .frame(width: geo.size.width / 3, alignment: .trailing)
-                        Button {
-                            withAnimation(.linear(duration: 2.0)) {
-                                vm.reloadData()
-                            }
-                        } label: {
-                            Image(systemName: "goforward")
-                        }
-                        .rotationEffect(Angle(degrees: vm.isLoading ? 360: 0), anchor: .center)
-                        
-                    } //: HStack
-                    .font(.caption)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.horizontal)
+                    columnTitles(geo: geo)
                     
                     if !showPortfolio {
                         allCoinList
@@ -105,6 +55,9 @@ struct HomeView: View {
                     }
                     Spacer()
                 } //: VStack
+                .sheet(isPresented: $showSettingsView, content: {
+                    SettingsView()
+                })
                 .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
                             .onEnded { value in
                     let horizontalAmount = value.translation.width as CGFloat
@@ -124,8 +77,21 @@ struct HomeView: View {
                         print(verticalAmount < 0 ? "up swipe" : "down swipe")
                     }
                 }) //: swipe left & right with animation
+                .padding(.top)
             } //: Geo
+            
         } //: ZStack
+        .padding(.top)
+            } else {
+                LockedView()
+                }
+        } //: ZStack appLock
+        .onAppear {
+            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
+            if appLockVM.isAppLockEnabled {
+                appLockVM.appLockValidation()
+            }
+        }
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
@@ -165,6 +131,66 @@ extension HomeView {
                     }
                 }
         }
+        .padding(.horizontal)
+    }
+    private func columnTitles(geo: GeometryProxy) -> some View {
+        HStack {
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity((vm.sortOptions == .rank || vm.sortOptions == .rankReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .rank ? 0 : 180))
+            } //: HStack
+            .onTapGesture {
+                withAnimation {
+                    vm.sortOptions = vm.sortOptions == .rank ? .rankReversed : .rank
+                }
+                //                            // Same but short
+                //                            if vm.sortOptions == .rank {
+                //                                vm.sortOptions = .rankReversed
+                //                            } else {
+                //                                vm.sortOptions = .rank
+                //                            }
+            }
+            Spacer()
+            if showPortfolio {
+                HStack(spacing: 4) {
+                    Text("Holdings")
+                    Image(systemName: "chevron.down")
+                        .opacity((vm.sortOptions == .holdings || vm.sortOptions == .holdingsReversed) ? 1.0 : 0.0)
+                        .rotationEffect(Angle(degrees: vm.sortOptions == .holdings ? 0 : 180))
+                } //: HStack
+                .onTapGesture {
+                    withAnimation {
+                        vm.sortOptions = vm.sortOptions == .holdings ? .holdingsReversed : .holdings
+                    }
+                }
+            }
+            HStack(spacing: 4) {
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity((vm.sortOptions == .price || vm.sortOptions == .priceReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .price ? 0 : 180))
+            } //: HStack
+            .onTapGesture {
+                withAnimation {
+                    vm.sortOptions = vm.sortOptions == .price ? .priceReversed : .price
+                }
+            }
+            
+            .frame(width: geo.size.width / 3, alignment: .trailing)
+            Button {
+                withAnimation(.linear(duration: 2.0)) {
+                    vm.reloadData()
+                }
+            } label: {
+                Image(systemName: "goforward")
+            }
+            .rotationEffect(Angle(degrees: vm.isLoading ? 360: 0), anchor: .center)
+            
+        } //: HStack
+        .font(.caption)
+        .foregroundColor(.theme.secondaryText)
         .padding(.horizontal)
     }
     private var allCoinList: some View {
@@ -218,5 +244,6 @@ struct HomeView_Previews: PreviewProvider {
                 .navigationBarHidden(true)
         }
         .environmentObject(HomeViewModel())
+        .environmentObject(AppLockViewModel())
     }
 }

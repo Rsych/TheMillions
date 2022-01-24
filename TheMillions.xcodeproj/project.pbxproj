@@ -16,6 +16,7 @@
 		7113A3FB279EA4630034A1AB /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */; };
 		7113A3FC279EA4630034A1AB /* LockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FA279EA4630034A1AB /* LockedView.swift */; };
 		7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */; };
+		7113A400279EAA510034A1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FF279EAA510034A1AB /* AppDelegate.swift */; };
 		711CAE562799577300445A98 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711CAE552799577300445A98 /* SearchBarView.swift */; };
 		7146BF26279DEA6500FBB88E /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF25279DEA6500FBB88E /* LineChartView.swift */; };
 		7146BF28279DEF0100FBB88E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7146BF27279DEF0100FBB88E /* Date.swift */; };
@@ -69,6 +70,7 @@
 		7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		7113A3FA279EA4630034A1AB /* LockedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockedView.swift; sourceTree = "<group>"; };
 		7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
+		7113A3FF279EAA510034A1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711CAE552799577300445A98 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7146BF25279DEA6500FBB88E /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		7146BF27279DEF0100FBB88E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -185,11 +187,12 @@
 		71810FB027984B0D0039036A /* TheMillions */ = {
 			isa = PBXGroup;
 			children = (
+				7113A3FF279EAA510034A1AB /* AppDelegate.swift */,
+				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				7113A3F5279EA3CA0034A1AB /* Controllers */,
 				7113A3F8279EA4630034A1AB /* AppLock */,
 				71E897F92798963300BCEB89 /* TheMillions.entitlements */,
 				71810FD7279882010039036A /* Constants.swift */,
-				71810FB127984B0D0039036A /* TheMillionsApp.swift */,
 				71810FCF2798550D0039036A /* Models */,
 				71E897FA27989E4F00BCEB89 /* Utilities */,
 				71810FC427984F190039036A /* Home */,
@@ -454,6 +457,7 @@
 				71E897F527988BB400BCEB89 /* HomeViewModel.swift in Sources */,
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71C9380C279A08E6003B3235 /* HomeStatsView.swift in Sources */,
+				7113A400279EAA510034A1AB /* AppDelegate.swift in Sources */,
 				7113A3F7279EA3D70034A1AB /* Settings-Controller.swift in Sources */,
 				71E897FC27989E7100BCEB89 /* NetworkManager.swift in Sources */,
 				71902DD3279D680F00A107C9 /* DetailViewModel.swift in Sources */,
@@ -611,6 +615,7 @@
 				DEVELOPMENT_TEAM = G6V85GALCN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need Face ID to unlock this App.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -644,6 +649,7 @@
 				DEVELOPMENT_TEAM = G6V85GALCN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need Face ID to unlock this App.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
