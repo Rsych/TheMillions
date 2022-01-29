@@ -29,6 +29,7 @@
 * Local notification (Functionalities already implemented)
 * ~~App Settings View - Store locally~~
 * ~~App Icon~~
+* Add limited funds feature for investment 
 * App Screen for AppStore
 * Publish
 
