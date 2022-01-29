@@ -22,7 +22,7 @@
 * Accessibility
 * ~~REST API fetch using Combine~~
 * ~~CoreData~~
-* ~~CloudKit~~
+* ~~CloudKit~~ fix connect query bug
 * Localization en, ko
 * Clean up
 * Test
