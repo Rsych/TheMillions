@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView2: View {
     // MARK: - Properties
     @EnvironmentObject private var vm: HomeViewModel
     
@@ -16,7 +16,7 @@ struct HomeView: View {
     @EnvironmentObject private var appLockVM: AppLockViewModel
     @EnvironmentObject var dataController: DataController
     
-    @State private var showPortfolio: Bool = false
+    @State private var showPortfolioStat: Bool = true
     @State var selectedTab = 0
     
     @State private var showPortfolioView: Bool = false
@@ -35,7 +35,9 @@ struct HomeView: View {
             // MARK: - Background
             Color.theme.background
                 .ignoresSafeArea()
-                .sheet(isPresented: $showPortfolioView) {
+                .sheet(isPresented: $showPortfolioView, onDismiss: {
+                    selectedTab = 0
+                }) {
                     PortfolioView()
                         .environmentObject(vm)
                 }
@@ -43,61 +45,39 @@ struct HomeView: View {
             // MARK: - Content
             
             GeometryReader { geo in
-                if self.selectedTab == 0 {
-                    VStack {
-                        homeHeader
-                        HomeStatsView(showPortFolio: $showPortfolio)
-                        SearchBarView(searchText: $vm.searchText)
-                        
-                        columnTitles(geo: geo)
-                        
-                        if !showPortfolio {
-                            allCoinList
-                                .transition(.move(edge: .leading))
-                        } else {
-                            ZStack(alignment: .top) {
-                                if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
-                                    portfolioCoinEmpty
-                                } else {
-                                    portfolioCoinList
-                                }
-                            } //: ZStack
-                            .transition(.move(edge: .trailing))
-                        }
-                        Spacer()
-                    } //: VStack
-                    .sheet(isPresented: $showSettingsView, content: {
-                        SettingsView()
-                    })
-                } else if self.selectedTab == 1 {
-                    portfolioCoinList
-                } else {
+                
+                VStack {
+                    homeHeader
+                    HomeStatsView(showPortFolio: $showPortfolioStat)
+                    SearchBarView(searchText: $vm.searchText)
                     
-                }
-                
-                
-//                .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
-//                            .onEnded { value in
-//                    let horizontalAmount = value.translation.width as CGFloat
-//                    let verticalAmount = value.translation.height as CGFloat
-//                    if abs(horizontalAmount) > abs(verticalAmount) {
-//                        print(horizontalAmount < 0 ? "left swipe" : "right swipe")
-//                        if horizontalAmount < 0 {
-//                            withAnimation(.spring()) {
-//                                showPortfolio = true
-//                            }
-//                        } else {
-//                            withAnimation(.spring()) {
-//                                showPortfolio = false
-//                            }
-//                        }
-//                    } else {
-//                        print(verticalAmount < 0 ? "up swipe" : "down swipe")
-//                    }
-//                }) //: swipe left & right with animation
-//                .padding(.top)
+                    columnTitles(geo: geo)
+                    
+                    switch selectedTab {
+                    case 0:
+                        portFolioMainView
+                            .onAppear {
+                                showPortfolioStat = true
+                            }
+                    case 1:
+                        allCoinList
+                            .onAppear {
+                                showPortfolioStat = false
+                            }
+                    default:
+                        allCoinList
+                            .onAppear {
+                                showSettingsView.toggle()
+                                selectedTab = 0
+                            }
+                    }
+                    Spacer()
+                } //: VStack
+                .sheet(isPresented: $showSettingsView, content: {
+                    SettingsView()
+                })
             } //: Geo
-//            .zIndex(1.0)
+            //            .zIndex(1.0)
             
             FloatingTabBar(selected: $selectedTab)
         } //: ZStack
@@ -123,33 +103,29 @@ struct HomeView: View {
     }
 }
 
-extension HomeView {
+extension HomeView2 {
     private var homeHeader: some View {
         HStack {
-            CircleButtonView(iconName: showPortfolio ? "plus" : "gear")
+            CircleButtonView(iconName: "plus")
                 .animation(.none, value: 0)
                 .onTapGesture {
-                    if showPortfolio {
-                        showPortfolioView.toggle()
-                    } else {
-                        showSettingsView.toggle()
-                        print(showSettingsView)
-                    }
+                    showPortfolioView.toggle()
                 }
-                .background(CircleButtonAnimationView(animation: $showPortfolio))
+                .background(CircleButtonAnimationView(animation: $showPortfolioStat))
             Spacer()
-            Text(showPortfolio ? "Portfolio" : "Live prices")
+            Text(selectedTab == 0 ? "Portfolio" : "Live prices")
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(.theme.accent)
             Spacer()
-            CircleButtonView(iconName: "chevron.right")
-                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-                .onTapGesture {
-                    withAnimation(.spring()) {
-                        showPortfolio.toggle()
-                    }
-                }
+//            CircleButtonView(iconName: "chevron.right")
+//                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
+//                .onTapGesture {
+//                    withAnimation(.spring()) {
+//                        showPortfolio.toggle()
+//                    }
+//                }
+            Spacer()
         }
         .padding(.horizontal)
     }
@@ -173,7 +149,7 @@ extension HomeView {
                 //                            }
             }
             Spacer()
-            if showPortfolio {
+            if selectedTab == 0 {
                 HStack(spacing: 4) {
                     Text("Holdings")
                     Image(systemName: "chevron.down")
@@ -257,6 +233,15 @@ extension HomeView {
             .multilineTextAlignment(.center)
             .padding(10)
     }
+    private var portFolioMainView: some View {
+        ZStack(alignment: .top) {
+            if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                portfolioCoinEmpty
+            } else {
+                portfolioCoinList
+            }
+        } //: ZStack
+    }
     
     // segue to detail view
     private func segue(coin: Coin) {
@@ -265,10 +250,10 @@ extension HomeView {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct HomeView2_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HomeView()
+            HomeView2()
             //                .preferredColorScheme(.dark)
                 .navigationBarHidden(true)
         }

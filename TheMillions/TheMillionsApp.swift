@@ -27,21 +27,22 @@ struct TheMillionsApp: App {
         WindowGroup {
             ZStack {
                 NavigationView {
-                    HomeView()
+                    HomeView2()
                         .navigationBarHidden(true)
                         .environmentObject(vm)
                         .environmentObject(appLockVM)
                         .environmentObject(dataController)
                 } //: NavView
                 .navigationViewStyle(.stack)
-                ZStack {
-                    if showLaunchView {
-                        LaunchView(showLaunchView: $showLaunchView)
-                            .transition(.move(edge: .leading))
-                    }
-                } //: ZStack
-                // to fix ZStack display error
-                .zIndex(2.0)
+                // enable it later before production
+//                ZStack {
+//                    if showLaunchView {
+//                        LaunchView(showLaunchView: $showLaunchView)
+//                            .transition(.move(edge: .leading))
+//                    }
+//                } //: ZStack
+//                // to fix ZStack display error
+//                .zIndex(2.0)
             }
             
             .blur(radius: blurRadius)
