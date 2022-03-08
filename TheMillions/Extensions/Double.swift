@@ -27,6 +27,20 @@ extension Double {
         return currencyFormatter.string(from: number) ?? "$0.00"
     }
     
+    func currencyTo6Digits() -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: self)
+        formatter.usesGroupingSeparator = true
+        formatter.numberStyle = .currency
+        //        // change later
+        formatter.locale = .current
+        formatter.currencyCode = "usd"
+        formatter.currencySymbol = "$"
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 6
+        return formatter.string(from: number) ?? "$0.00000"
+    }
+    
     /// Converts a Double into String
     func numberTo6Digits() -> String {
         return String(format: "%.2f", self)
