@@ -17,6 +17,7 @@ struct HomeView: View {
     @EnvironmentObject var dataController: DataController
     
     @State private var showPortfolio: Bool = false
+    @State var selectedTab = 0
     
     @State private var showPortfolioView: Bool = false
     @State private var showSettingsView: Bool = false
@@ -24,11 +25,13 @@ struct HomeView: View {
     @State private var selectedCoin: Coin? = nil
     @State private var showDetailView: Bool = false
     
+    
+    
     // MARK: - Body
     var body: some View {
         //        ZStack {
         //            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
-        ZStack {
+        ZStack(alignment: .bottom) {
             // MARK: - Background
             Color.theme.background
                 .ignoresSafeArea()
@@ -38,55 +41,65 @@ struct HomeView: View {
                 }
             
             // MARK: - Content
-            GeometryReader { geo in
-                VStack {
-                    homeHeader
-                    HomeStatsView(showPortFolio: $showPortfolio)
-                    SearchBarView(searchText: $vm.searchText)
-                    
-                    columnTitles(geo: geo)
-                    
-                    if !showPortfolio {
-                        allCoinList
-                            .transition(.move(edge: .leading))
-                    } else {
-                        ZStack(alignment: .top) {
-                            if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
-                                portfolioCoinEmpty
-                            } else {
-                                portfolioCoinList
-                            }
-                        } //: ZStack
-                        .transition(.move(edge: .trailing))
-                    }
-                    Spacer()
-                } //: VStack
-                .sheet(isPresented: $showSettingsView, content: {
-                    SettingsView()
-                })
-                .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
-                            .onEnded { value in
-                    let horizontalAmount = value.translation.width as CGFloat
-                    let verticalAmount = value.translation.height as CGFloat
-                    if abs(horizontalAmount) > abs(verticalAmount) {
-                        print(horizontalAmount < 0 ? "left swipe" : "right swipe")
-                        if horizontalAmount < 0 {
-                            withAnimation(.spring()) {
-                                showPortfolio = true
-                            }
-                        } else {
-                            withAnimation(.spring()) {
-                                showPortfolio = false
-                            }
-                        }
-                    } else {
-                        print(verticalAmount < 0 ? "up swipe" : "down swipe")
-                    }
-                }) //: swipe left & right with animation
-                .padding(.top)
-            } //: Geo
-            .zIndex(1.0)
             
+            GeometryReader { geo in
+                if self.selectedTab == 0 {
+                    VStack {
+                        homeHeader
+                        HomeStatsView(showPortFolio: $showPortfolio)
+                        SearchBarView(searchText: $vm.searchText)
+                        
+                        columnTitles(geo: geo)
+                        
+                        if !showPortfolio {
+                            allCoinList
+                                .transition(.move(edge: .leading))
+                        } else {
+                            ZStack(alignment: .top) {
+                                if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                                    portfolioCoinEmpty
+                                } else {
+                                    portfolioCoinList
+                                }
+                            } //: ZStack
+                            .transition(.move(edge: .trailing))
+                        }
+                        Spacer()
+                    } //: VStack
+                    .sheet(isPresented: $showSettingsView, content: {
+                        SettingsView()
+                    })
+                } else if self.selectedTab == 1 {
+                    portfolioCoinList
+                } else {
+                    
+                }
+                
+                
+//                .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+//                            .onEnded { value in
+//                    let horizontalAmount = value.translation.width as CGFloat
+//                    let verticalAmount = value.translation.height as CGFloat
+//                    if abs(horizontalAmount) > abs(verticalAmount) {
+//                        print(horizontalAmount < 0 ? "left swipe" : "right swipe")
+//                        if horizontalAmount < 0 {
+//                            withAnimation(.spring()) {
+//                                showPortfolio = true
+//                            }
+//                        } else {
+//                            withAnimation(.spring()) {
+//                                showPortfolio = false
+//                            }
+//                        }
+//                    } else {
+//                        print(verticalAmount < 0 ? "up swipe" : "down swipe")
+//                    }
+//                }) //: swipe left & right with animation
+//                .padding(.top)
+            } //: Geo
+//            .zIndex(1.0)
+            
+            FloatingTabBar(selected: $selectedTab)
         } //: ZStack
         //        .padding(.top)
         //            } else {
