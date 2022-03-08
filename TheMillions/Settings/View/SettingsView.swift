@@ -46,20 +46,20 @@ struct SettingsView: View {
                         .opacity(0.0)
                     }  //: Customization ZStack
                     
-//                    ZStack {
-//                        HStack {
-//                            Text("Face ID / Passcode")
-//                            Spacer()
-//                            Image(systemName: "chevron.forward")
-//                        }
-//                        
-//                        NavigationLink {
-//                            SecurityView()
-//                        } label: {
-//                            EmptyView()
-//                        }
-//                        .opacity(0.0)
-//                    }  //: Locking ZStack
+                    ZStack {
+                        HStack {
+                            Text("Face ID / Passcode")
+                            Spacer()
+                            Image(systemName: "chevron.forward")
+                        }
+                        
+                        NavigationLink {
+                            SecurityView()
+                        } label: {
+                            EmptyView()
+                        }
+                        .opacity(0.0)
+                    }  //: Locking ZStack
                     
                     Button {
                         dataController.showAppSettings()

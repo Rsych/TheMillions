@@ -25,7 +25,7 @@ struct FloatingTabBar: View {
             Button {
                 self.selected = 1
             } label: {
-                Image(systemName: "arrow.left.arrow.right")
+                Image(systemName: "chart.line.uptrend.xyaxis")
                     .foregroundColor(self.selected == 1 ? .primary : .gray)
                     .padding(.horizontal)
             }

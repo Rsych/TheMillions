@@ -50,7 +50,7 @@ extension CoinRowListView {
     
     private var centerColumn: some View {
         VStack(alignment: .trailing) {
-            Text(coin.currentHoldingValue.currencyTo2Digits())
+            Text(coin.currentHoldingValue.currencyTo6Digits())
                 .bold()
             Text((coin.currentHoldings ?? 0).numberTo6Digits())
         }
@@ -58,7 +58,7 @@ extension CoinRowListView {
     }
     private var rightColumn: some View {
         VStack(alignment: .trailing) {
-            Text(coin.currentPrice.currencyTo2Digits())
+            Text(coin.currentPrice.currencyTo6Digits())
                 .bold()
             Text(coin.priceChangePercentage24H?.percentToString() ?? "0%")
                 .foregroundColor(

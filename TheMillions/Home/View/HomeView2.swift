@@ -28,75 +28,55 @@ struct HomeView2: View {
     
     // MARK: - Body
     var body: some View {
-        //        ZStack {
-        //            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
-        ZStack(alignment: .bottom) {
-            // MARK: - Background
-            Color.theme.background
-                .ignoresSafeArea()
-                .sheet(isPresented: $showPortfolioView, onDismiss: {
-                    selectedTab = 0
-                }) {
-                    PortfolioView()
-                        .environmentObject(vm)
-                }
-            
-            // MARK: - Content
-            
-            GeometryReader { geo in
+        ZStack {
+            if !appLockVM.isAppLockEnabled || appLockVM.isAppUnLocked {
+                ZStack(alignment: .bottom) {
+                    // MARK: - Background
+                    Color.theme.background
+                        .ignoresSafeArea()
+                        .sheet(isPresented: $showPortfolioView, onDismiss: {
+                            selectedTab = 0
+                        }) {
+                            PortfolioView()
+                                .environmentObject(vm)
+                        }
+                    
+                    // MARK: - Content
+                    
+                    GeometryReader { geo in
+                        
+                        VStack {
+                            homeHeader
+                            HomeStatsView(showPortFolio: $showPortfolioStat)
+                            SearchBarView(searchText: $vm.searchText)
+                            columnTitles(geo: geo)
+                            viewSwitch
+                            Spacer()
+                        } //: VStack
+                        .sheet(isPresented: $showSettingsView, content: {
+                            SettingsView()
+                        })
+                    } //: Geo
+                    
+                    // MARK: - FloatingTabBar
+                    FloatingTabBar(selected: $selectedTab)
+                        .zIndex(1)
+                } //: ZStack
                 
-                VStack {
-                    homeHeader
-                    HomeStatsView(showPortFolio: $showPortfolioStat)
-                    SearchBarView(searchText: $vm.searchText)
-                    
-                    columnTitles(geo: geo)
-                    
-                    ZStack {
-                        switch selectedTab {
-                        case 0:
-                            portFolioMainView
-                                .onAppear(perform: {
-                                    showPortfolioStat = true
-                                })
-                        case 1:
-                            allCoinList
-                        default:
-                            allCoinList
-                                .onAppear {
-                                    showSettingsView.toggle()
-                                    selectedTab = 0
-                                }
-                        } //: Switch Tab
-                    } //: ZStack
-                    .animation(.easeInOut, value: selectedTab)
-                    .zIndex(2)
-                    Spacer()
-                } //: VStack
-                .sheet(isPresented: $showSettingsView, content: {
-                    SettingsView()
-                })
-            } //: Geo
-            
-// MARK: - FloatingTabBar
-            FloatingTabBar(selected: $selectedTab)
-                .zIndex(1)
-        } //: ZStack
+                // MARK: - AppLock
+                .padding(.top)
+            } else {
+                LockedView()
+            }
+        } //: ZStack appLock
+        .onAppear {
+            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
+            if appLockVM.isAppLockEnabled {
+                appLockVM.appLockValidation()
+            }
+        }
         
-// MARK: - AppLock
-        //        .padding(.top)
-        //            } else {
-        //                LockedView()
-        //                }
-        //        } //: ZStack appLock
-        //        .onAppear {
-        //            // if 'isAppLockEnabled' value true, then immediately do the app lock validation
-        //            if appLockVM.isAppLockEnabled {
-        //                appLockVM.appLockValidation()
-        //            }
-        //        }
-
-// MARK: - LazyNavLink
+        // MARK: - LazyNavLink
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
@@ -125,13 +105,6 @@ extension HomeView2 {
                 .transition(.slide)
                 .animation(.easeInOut, value: selectedTab)
             Spacer()
-            //            CircleButtonView(iconName: "chevron.right")
-            //                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-            //                .onTapGesture {
-            //                    withAnimation(.spring()) {
-            //                        showPortfolio.toggle()
-            //                    }
-            //                }
             Spacer()
         }
         .padding(.horizontal)
@@ -148,12 +121,6 @@ extension HomeView2 {
                 withAnimation {
                     vm.sortOptions = vm.sortOptions == .rank ? .rankReversed : .rank
                 }
-                //                            // Same but short
-                //                            if vm.sortOptions == .rank {
-                //                                vm.sortOptions = .rankReversed
-                //                            } else {
-                //                                vm.sortOptions = .rank
-                //                            }
             }
             Spacer()
             if selectedTab == 0 {
@@ -210,6 +177,7 @@ extension HomeView2 {
             showPortfolioStat = false
         })
         .transition(.slide)
+        // Slide down to refresh data
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
                 vm.reloadData()
@@ -253,6 +221,27 @@ extension HomeView2 {
             }
         } //: ZStack
         .transition(.slide)
+    }
+    
+    private var viewSwitch: some View {
+        ZStack {
+            switch selectedTab {
+            case 0:
+                portFolioMainView
+                    .onAppear(perform: {
+                        showPortfolioStat = true
+                    })
+            case 1:
+                allCoinList
+            default:
+                allCoinList
+                    .onAppear {
+                        showSettingsView.toggle()
+                        selectedTab = 0
+                    }
+            } //: Switch Tab
+        } //: ZStack
+        .animation(.easeInOut, value: selectedTab)
     }
     
     // segue to detail view

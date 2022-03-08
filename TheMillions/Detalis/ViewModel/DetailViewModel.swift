@@ -60,7 +60,7 @@ class DetailViewModel: ObservableObject {
     
     func createOverviewArray(coinModel: Coin) -> [Stats] {
         // Overview
-        let price = coinModel.currentPrice.currencyTo2Digits()
+        let price = coinModel.currentPrice.currencyTo6Digits()
         let pricePercentChange = coinModel.priceChangePercentage24H
         let pricePercentStat = Stats(title: "Price Changes in %", value: price, percentile: pricePercentChange)
         
@@ -82,13 +82,13 @@ class DetailViewModel: ObservableObject {
     
     func createAdditionalArray(coinDetailModel: CoinDetail?, coinModel: Coin) -> [Stats] {
         // Additional
-        let high = coinModel.high24H?.currencyTo2Digits() ?? "N/A"
+        let high = coinModel.high24H?.currencyTo6Digits() ?? "N/A"
         let highStats = Stats(title: "24 High", value: high)
         
-        let low = coinModel.low24H?.currencyTo2Digits() ?? "N/A"
+        let low = coinModel.low24H?.currencyTo6Digits() ?? "N/A"
         let lowStats = Stats(title: "24 Low", value: low)
         
-        let priceChange = coinModel.priceChange24H?.currencyTo2Digits() ?? "N/A"
+        let priceChange = coinModel.priceChange24H?.currencyTo6Digits() ?? "N/A"
         let pricePercentChange2 = coinModel.priceChangePercentage24H
         let priceChangeStat = Stats(title: "24h Price Change", value: priceChange, percentile: pricePercentChange2)
         
