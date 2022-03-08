@@ -26,7 +26,6 @@ struct HomeView2: View {
     @State private var showDetailView: Bool = false
     
     
-    
     // MARK: - Body
     var body: some View {
         //        ZStack {
@@ -53,34 +52,38 @@ struct HomeView2: View {
                     
                     columnTitles(geo: geo)
                     
-                    switch selectedTab {
-                    case 0:
-                        portFolioMainView
-                            .onAppear {
-                                showPortfolioStat = true
-                            }
-                    case 1:
-                        allCoinList
-                            .onAppear {
-                                showPortfolioStat = false
-                            }
-                    default:
-                        allCoinList
-                            .onAppear {
-                                showSettingsView.toggle()
-                                selectedTab = 0
-                            }
-                    }
+                    ZStack {
+                        switch selectedTab {
+                        case 0:
+                            portFolioMainView
+                                .onAppear(perform: {
+                                    showPortfolioStat = true
+                                })
+                        case 1:
+                            allCoinList
+                        default:
+                            allCoinList
+                                .onAppear {
+                                    showSettingsView.toggle()
+                                    selectedTab = 0
+                                }
+                        } //: Switch Tab
+                    } //: ZStack
+                    .animation(.easeInOut, value: selectedTab)
+                    .zIndex(2)
                     Spacer()
                 } //: VStack
                 .sheet(isPresented: $showSettingsView, content: {
                     SettingsView()
                 })
             } //: Geo
-            //            .zIndex(1.0)
             
+// MARK: - FloatingTabBar
             FloatingTabBar(selected: $selectedTab)
+                .zIndex(1)
         } //: ZStack
+        
+// MARK: - AppLock
         //        .padding(.top)
         //            } else {
         //                LockedView()
@@ -92,6 +95,8 @@ struct HomeView2: View {
         //                appLockVM.appLockValidation()
         //            }
         //        }
+
+// MARK: - LazyNavLink
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
@@ -117,14 +122,16 @@ extension HomeView2 {
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(.theme.accent)
+                .transition(.slide)
+                .animation(.easeInOut, value: selectedTab)
             Spacer()
-//            CircleButtonView(iconName: "chevron.right")
-//                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-//                .onTapGesture {
-//                    withAnimation(.spring()) {
-//                        showPortfolio.toggle()
-//                    }
-//                }
+            //            CircleButtonView(iconName: "chevron.right")
+            //                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
+            //                .onTapGesture {
+            //                    withAnimation(.spring()) {
+            //                        showPortfolio.toggle()
+            //                    }
+            //                }
             Spacer()
         }
         .padding(.horizontal)
@@ -199,6 +206,10 @@ extension HomeView2 {
                     }
             } //: Loop
         } //: List
+        .onAppear(perform: {
+            showPortfolioStat = false
+        })
+        .transition(.slide)
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
                 vm.reloadData()
@@ -241,6 +252,7 @@ extension HomeView2 {
                 portfolioCoinList
             }
         } //: ZStack
+        .transition(.slide)
     }
     
     // segue to detail view
