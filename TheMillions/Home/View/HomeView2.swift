@@ -53,33 +53,37 @@ struct HomeView2: View {
                     
                     columnTitles(geo: geo)
                     
-                    switch selectedTab {
-                    case 0:
-                        portFolioMainView
-                            .onAppear {
-                                showPortfolioStat = true
-                            }
-                    case 1:
-                        allCoinList
-                            .onAppear {
-                                showPortfolioStat = false
-                            }
-                    default:
-                        allCoinList
-                            .onAppear {
-                                showSettingsView.toggle()
-                                selectedTab = 0
-                            }
-                    }
+                    ZStack {
+                        switch selectedTab {
+                        case 0:
+                            portFolioMainView
+                                .onAppear {
+                                    showPortfolioStat = true
+                                }
+                        case 1:
+                            allCoinList
+                                .onAppear {
+                                    showPortfolioStat = false
+                                }
+                        default:
+                            allCoinList
+                                .onAppear {
+                                    showSettingsView.toggle()
+                                    selectedTab = 0
+                                }
+                        } //: Switch Tab
+                    } //: ZStack
+                    .animation(.easeInOut)
                     Spacer()
                 } //: VStack
                 .sheet(isPresented: $showSettingsView, content: {
                     SettingsView()
                 })
             } //: Geo
-            //            .zIndex(1.0)
+//                        .zIndex(1.0)
             
             FloatingTabBar(selected: $selectedTab)
+                .transition(.slide)
         } //: ZStack
         //        .padding(.top)
         //            } else {
@@ -118,13 +122,13 @@ extension HomeView2 {
                 .fontWeight(.heavy)
                 .foregroundColor(.theme.accent)
             Spacer()
-//            CircleButtonView(iconName: "chevron.right")
-//                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-//                .onTapGesture {
-//                    withAnimation(.spring()) {
-//                        showPortfolio.toggle()
-//                    }
-//                }
+            //            CircleButtonView(iconName: "chevron.right")
+            //                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
+            //                .onTapGesture {
+            //                    withAnimation(.spring()) {
+            //                        showPortfolio.toggle()
+            //                    }
+            //                }
             Spacer()
         }
         .padding(.horizontal)
