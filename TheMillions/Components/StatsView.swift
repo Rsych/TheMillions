@@ -32,6 +32,7 @@ struct StatsView: View {
             .foregroundColor((stats.percentile ?? 0) >= 0 ? Color.theme.green : Color.theme.red)
             .opacity(stats.percentile == nil ? 0.0 : 1.0)
         } //: VStack
+        .animation(.easeInOut)
     }
 }
 

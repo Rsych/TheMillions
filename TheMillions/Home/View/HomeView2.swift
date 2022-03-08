@@ -26,7 +26,6 @@ struct HomeView2: View {
     @State private var showDetailView: Bool = false
     
     
-    
     // MARK: - Body
     var body: some View {
         //        ZStack {
@@ -57,14 +56,11 @@ struct HomeView2: View {
                         switch selectedTab {
                         case 0:
                             portFolioMainView
-                                .onAppear {
+                                .onAppear(perform: {
                                     showPortfolioStat = true
-                                }
+                                })
                         case 1:
                             allCoinList
-                                .onAppear {
-                                    showPortfolioStat = false
-                                }
                         default:
                             allCoinList
                                 .onAppear {
@@ -73,18 +69,21 @@ struct HomeView2: View {
                                 }
                         } //: Switch Tab
                     } //: ZStack
-                    .animation(.easeInOut)
+                    .animation(.easeInOut, value: selectedTab)
+                    .zIndex(2)
                     Spacer()
                 } //: VStack
                 .sheet(isPresented: $showSettingsView, content: {
                     SettingsView()
                 })
             } //: Geo
-//                        .zIndex(1.0)
             
+// MARK: - FloatingTabBar
             FloatingTabBar(selected: $selectedTab)
-                .transition(.slide)
+                .zIndex(1)
         } //: ZStack
+        
+// MARK: - AppLock
         //        .padding(.top)
         //            } else {
         //                LockedView()
@@ -96,6 +95,8 @@ struct HomeView2: View {
         //                appLockVM.appLockValidation()
         //            }
         //        }
+
+// MARK: - LazyNavLink
         // To save resources, instead using normal NavLink which init multiple views, used custom lazy link
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
@@ -121,6 +122,8 @@ extension HomeView2 {
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(.theme.accent)
+                .transition(.slide)
+                .animation(.easeInOut, value: selectedTab)
             Spacer()
             //            CircleButtonView(iconName: "chevron.right")
             //                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
@@ -203,6 +206,10 @@ extension HomeView2 {
                     }
             } //: Loop
         } //: List
+        .onAppear(perform: {
+            showPortfolioStat = false
+        })
+        .transition(.slide)
         .refreshable {
             withAnimation(.linear(duration: 2.0)) {
                 vm.reloadData()
@@ -245,6 +252,7 @@ extension HomeView2 {
                 portfolioCoinList
             }
         } //: ZStack
+        .transition(.slide)
     }
     
     // segue to detail view
