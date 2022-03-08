@@ -27,7 +27,7 @@ struct TheMillionsApp: App {
         WindowGroup {
             ZStack {
                 NavigationView {
-                    HomeView()
+                    HomeView2()
                         .navigationBarHidden(true)
                         .environmentObject(vm)
                         .environmentObject(appLockVM)
