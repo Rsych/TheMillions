@@ -69,12 +69,7 @@ struct CustomizationView: View {
             }
         }  //: onAppear
         .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigation) {
-                Text("Settings")
-                    .font(.title)
-            }
-        })
-        .navigationBackButton(color: UIColor.label)
+        .navigationTitle("Customization")
+        .navigationBackButton(color: UIColor.label, text: "Settings")
     }  //: Body
 }
