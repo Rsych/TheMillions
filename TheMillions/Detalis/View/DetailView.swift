@@ -29,6 +29,9 @@ struct DetailView: View {
     // MARK: - Properties
     @StateObject private var vm: DetailViewModel
     @State private var showMore = false
+    
+    @State private var showAddToPortfolio = false
+    
     private let column: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -40,6 +43,7 @@ struct DetailView: View {
     }
     // MARK: - Body
     var body: some View {
+        ZStack(alignment: .bottomTrailing) {
         ScrollView {
             VStack {
                 LineChartView(coin: vm.coin)
@@ -59,6 +63,16 @@ struct DetailView: View {
                 .padding()
             } //: VStack
         } //: ScrollView
+            Button {
+                self.showAddToPortfolio.toggle()
+            } label: {
+                CircleButtonView(iconName: "plus").opacity(0.8)
+            }
+            .offset(x: -10, y: 0)
+        }
+        .sheet(isPresented: $showAddToPortfolio, content: {
+            EmptyView()
+        })
         .navigationTitle(vm.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
