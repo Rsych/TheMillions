@@ -32,6 +32,7 @@ struct CoinRowListView: View {
     }
 }
 extension CoinRowListView {
+    
     private var leftColumn: some View {
         HStack(spacing: 0) {
             Text("\(coin.rank)")

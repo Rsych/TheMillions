@@ -167,6 +167,7 @@ extension HomeView2 {
         List {
             ForEach(vm.allCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: false)
+                    .customSwipeAction()
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
                     .onTapGesture {
                         segue(coin: coin)
@@ -190,6 +191,7 @@ extension HomeView2 {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowListView(coin: coin, showHoldingsColumn: true)
+                    .customSwipeAction()
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 30, trailing: 10))
                     .onTapGesture {
                         segue(coin: coin)
@@ -249,7 +251,7 @@ extension HomeView2 {
         selectedCoin = coin
         showDetailView.toggle()
     }
-}
+} //: Extension
 
 struct HomeView2_Previews: PreviewProvider {
     static var previews: some View {
@@ -260,5 +262,44 @@ struct HomeView2_Previews: PreviewProvider {
         }
         .environmentObject(HomeViewModel())
         .environmentObject(AppLockViewModel())
+    }
+}
+
+struct CustomSwipeAction: ViewModifier {
+    func body(content: Content) -> some View {
+        return content
+            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                Button {
+                    print("Text")
+                } label: {
+                    Text("Text")
+                }
+                Button {
+                    print("Flag")
+                } label: {
+                    Image(systemName: "flag")
+                }
+                .tint(.green)
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                Button(role: .destructive) {
+                    print("Trash")
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+                .tint(.red)
+                Button {
+                    print("Read")
+                } label: {
+                    Label("Read", systemImage: "envelope.open")
+                }
+                .tint(.blue)
+            }
+    }
+}
+
+extension View {
+    func customSwipeAction() -> some View {
+        modifier(CustomSwipeAction())
     }
 }
