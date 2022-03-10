@@ -29,6 +29,10 @@ struct DetailView: View {
     // MARK: - Properties
     @StateObject private var vm: DetailViewModel
     @State private var showMore = false
+    
+    @State private var selectedCoin: Coin? = nil
+    @State private var showAddToPortfolio = false
+    
     private let column: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -40,31 +44,42 @@ struct DetailView: View {
     }
     // MARK: - Body
     var body: some View {
-        ScrollView {
-            VStack {
-                LineChartView(coin: vm.coin)
-                    .padding(.vertical)
-                VStack(alignment: .leading, spacing: 20) {
-                    overViewTitle
-                    Divider()
-                    
-                    description
-                    
-                    overViewGrid
-                    additionalTitles
-                    Divider()
-                    additionalViewGrid
-                    websiteLinks
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                VStack {
+                    LineChartView(coin: vm.coin)
+                        .padding(.vertical)
+                    VStack(alignment: .leading, spacing: 20) {
+                        overViewTitle
+                        Divider()
+                        
+                        description
+                        
+                        overViewGrid
+                        additionalTitles
+                        Divider()
+                        additionalViewGrid
+                        websiteLinks
+                    } //: VStack
+                    .padding()
                 } //: VStack
-                .padding()
-            } //: VStack
-        } //: ScrollView
+            } //: ScrollView
+            addButton
+                .offset(x: -10, y: 0)
+        }
+        .sheet(isPresented: $showAddToPortfolio, content: {
+            DetailAddPortfolioView(coin: $selectedCoin)
+        })
         .navigationTitle(vm.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 navTrailingItem
             }
         }
+    }
+    private func segue(coin: Coin) {
+        selectedCoin = coin
+        showAddToPortfolio.toggle()
     }
     
 }
@@ -91,10 +106,10 @@ extension DetailView {
             if let coinDescription = vm.coinDescription,
                !coinDescription.isEmpty {
                 VStack {
-                Text(coinDescription.description)
+                    Text(coinDescription.description)
                         .lineLimit(showMore ? nil : 3)
-                    .font(.callout)
-                    .foregroundColor(.theme.secondaryText)
+                        .font(.callout)
+                        .foregroundColor(.theme.secondaryText)
                     Button {
                         withAnimation(.easeInOut){ showMore.toggle() }
                     } label: {
@@ -157,5 +172,13 @@ extension DetailView {
         .tint(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
         .font(.headline)
+    }
+    
+    private var addButton: some View {
+        Button {
+            segue(coin: vm.coin)
+        } label: {
+            CircleButtonView(iconName: "plus").opacity(0.8)
+        }
     }
 }

@@ -46,6 +46,7 @@
 		71902DD1279D660300A107C9 /* CoinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD0279D660300A107C9 /* CoinDetail.swift */; };
 		71902DD3279D680F00A107C9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD2279D680F00A107C9 /* DetailViewModel.swift */; };
 		71902DD5279D683A00A107C9 /* CoinDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD4279D683A00A107C9 /* CoinDetailService.swift */; };
+		7191826127D9D50200A34695 /* DetailAddPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191826027D9D50200A34695 /* DetailAddPortfolioView.swift */; };
 		71C21EC627D70E0500DB3FBF /* FloatingTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C21EC527D70E0500DB3FBF /* FloatingTabBar.swift */; };
 		71C21EC827D719CA00DB3FBF /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C21EC727D719CA00DB3FBF /* HomeView2.swift */; };
 		71C9380427995AF7003B3235 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9380327995AF7003B3235 /* UIApplication.swift */; };
@@ -105,6 +106,7 @@
 		71902DD0279D660300A107C9 /* CoinDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetail.swift; sourceTree = "<group>"; };
 		71902DD2279D680F00A107C9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		71902DD4279D683A00A107C9 /* CoinDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailService.swift; sourceTree = "<group>"; };
+		7191826027D9D50200A34695 /* DetailAddPortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddPortfolioView.swift; sourceTree = "<group>"; };
 		71C21EC527D70E0500DB3FBF /* FloatingTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBar.swift; sourceTree = "<group>"; };
 		71C21EC727D719CA00DB3FBF /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		71C9380327995AF7003B3235 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				71902DCE279C66CF00A107C9 /* DetailView.swift */,
 				7146BF25279DEA6500FBB88E /* LineChartView.swift */,
+				7191826027D9D50200A34695 /* DetailAddPortfolioView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				71E898072798BF4A00BCEB89 /* LocalFilemanager.swift in Sources */,
 				7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */,
 				71902DD5279D683A00A107C9 /* CoinDetailService.swift in Sources */,
+				7191826127D9D50200A34695 /* DetailAddPortfolioView.swift in Sources */,
 				71843BCF279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift in Sources */,
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
