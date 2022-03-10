@@ -30,6 +30,7 @@ struct DetailView: View {
     @StateObject private var vm: DetailViewModel
     @State private var showMore = false
     
+    @State private var selectedCoin: Coin? = nil
     @State private var showAddToPortfolio = false
     
     private let column: [GridItem] = [
@@ -64,14 +65,17 @@ struct DetailView: View {
             } //: VStack
         } //: ScrollView
             Button {
-                self.showAddToPortfolio.toggle()
+                segue(coin: vm.coin)
             } label: {
                 CircleButtonView(iconName: "plus").opacity(0.8)
             }
             .offset(x: -10, y: 0)
         }
         .sheet(isPresented: $showAddToPortfolio, content: {
-            EmptyView()
+            if let coin = vm.coin {
+                DetailAddPortfolioView(coin: $selectedCoin)
+                    .zIndex(1.0)
+            }
         })
         .navigationTitle(vm.coin.name)
         .toolbar {
@@ -79,6 +83,10 @@ struct DetailView: View {
                 navTrailingItem
             }
         }
+    }
+    private func segue(coin: Coin) {
+        selectedCoin = coin
+        showAddToPortfolio.toggle()
     }
     
 }
