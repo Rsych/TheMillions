@@ -12,11 +12,16 @@ struct DetailAddPortfolioView: View {
     @Binding var coin: Coin?
     init(coin: Binding<Coin?>) {
         _coin = coin
-        print("Itit detail loading view for \(coin.wrappedValue?.name)")
     }
     // MARK: - Body
     var body: some View {
-        Text(coin?.name ?? "")
+        VStack {
+            Text(coin?.currentHoldingValue.currencyTo6Digits() ?? "")
+            HStack {
+                Text("Current holding is:")
+                Text(coin?.currentHoldings?.numberTo6Digits() ?? "0")
+            }
+        }
     }
 }
 // MARK: - Preview

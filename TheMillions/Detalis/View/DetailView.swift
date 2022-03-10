@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import SwiftUIPullToRefresh
 
 struct DetailLoadingView: View {
     @Binding var coin: Coin?
     init(coin: Binding<Coin?>) {
         _coin = coin
-        print("Itit detail loading view for \(coin.wrappedValue?.name)")
     }
     
     var body: some View {
@@ -40,11 +40,21 @@ struct DetailView: View {
     
     init(coin: Coin) {
         _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
-        print("Itit detail view for \(coin.name)")
     }
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
+            //            RefreshableScrollView(onRefresh: { done in
+            //                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            //                    vm.reloadData()
+            //                    done()
+            //                }
+            //            }, progress: { state in // HERE
+            //                RefreshActivityIndicator(isAnimating: state == .primed || state == .loading) {
+            //                    $0.hidesWhenStopped = true }
+            //            }) {
+            //                // content here
+            //            } //: RefreshableScrollView
             ScrollView {
                 VStack {
                     LineChartView(coin: vm.coin)
