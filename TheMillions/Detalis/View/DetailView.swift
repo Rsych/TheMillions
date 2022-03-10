@@ -45,37 +45,30 @@ struct DetailView: View {
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-        ScrollView {
-            VStack {
-                LineChartView(coin: vm.coin)
-                    .padding(.vertical)
-                VStack(alignment: .leading, spacing: 20) {
-                    overViewTitle
-                    Divider()
-                    
-                    description
-                    
-                    overViewGrid
-                    additionalTitles
-                    Divider()
-                    additionalViewGrid
-                    websiteLinks
+            ScrollView {
+                VStack {
+                    LineChartView(coin: vm.coin)
+                        .padding(.vertical)
+                    VStack(alignment: .leading, spacing: 20) {
+                        overViewTitle
+                        Divider()
+                        
+                        description
+                        
+                        overViewGrid
+                        additionalTitles
+                        Divider()
+                        additionalViewGrid
+                        websiteLinks
+                    } //: VStack
+                    .padding()
                 } //: VStack
-                .padding()
-            } //: VStack
-        } //: ScrollView
-            Button {
-                segue(coin: vm.coin)
-            } label: {
-                CircleButtonView(iconName: "plus").opacity(0.8)
-            }
-            .offset(x: -10, y: 0)
+            } //: ScrollView
+            addButton
+                .offset(x: -10, y: 0)
         }
         .sheet(isPresented: $showAddToPortfolio, content: {
-            if let coin = vm.coin {
-                DetailAddPortfolioView(coin: $selectedCoin)
-                    .zIndex(1.0)
-            }
+            DetailAddPortfolioView(coin: $selectedCoin)
         })
         .navigationTitle(vm.coin.name)
         .toolbar {
@@ -113,10 +106,10 @@ extension DetailView {
             if let coinDescription = vm.coinDescription,
                !coinDescription.isEmpty {
                 VStack {
-                Text(coinDescription.description)
+                    Text(coinDescription.description)
                         .lineLimit(showMore ? nil : 3)
-                    .font(.callout)
-                    .foregroundColor(.theme.secondaryText)
+                        .font(.callout)
+                        .foregroundColor(.theme.secondaryText)
                     Button {
                         withAnimation(.easeInOut){ showMore.toggle() }
                     } label: {
@@ -179,5 +172,13 @@ extension DetailView {
         .tint(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
         .font(.headline)
+    }
+    
+    private var addButton: some View {
+        Button {
+            segue(coin: vm.coin)
+        } label: {
+            CircleButtonView(iconName: "plus").opacity(0.8)
+        }
     }
 }
