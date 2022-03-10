@@ -47,6 +47,7 @@
 		71902DD3279D680F00A107C9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD2279D680F00A107C9 /* DetailViewModel.swift */; };
 		71902DD5279D683A00A107C9 /* CoinDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD4279D683A00A107C9 /* CoinDetailService.swift */; };
 		7191826127D9D50200A34695 /* DetailAddPortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191826027D9D50200A34695 /* DetailAddPortfolioView.swift */; };
+		7191826427D9FA9300A34695 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 7191826327D9FA9300A34695 /* SwiftUIPullToRefresh */; };
 		71C21EC627D70E0500DB3FBF /* FloatingTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C21EC527D70E0500DB3FBF /* FloatingTabBar.swift */; };
 		71C21EC827D719CA00DB3FBF /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C21EC727D719CA00DB3FBF /* HomeView2.swift */; };
 		71C9380427995AF7003B3235 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C9380327995AF7003B3235 /* UIApplication.swift */; };
@@ -134,6 +135,7 @@
 			files = (
 				71843BC8279ADEF3007F70F0 /* CloudKit.framework in Frameworks */,
 				7113A3EC279EA30A0034A1AB /* BetterSafariView in Frameworks */,
+				7191826427D9FA9300A34695 /* SwiftUIPullToRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +408,7 @@
 			name = TheMillions;
 			packageProductDependencies = (
 				7113A3EB279EA30A0034A1AB /* BetterSafariView */,
+				7191826327D9FA9300A34695 /* SwiftUIPullToRefresh */,
 			);
 			productName = TheMillions;
 			productReference = 71810FAE27984B0D0039036A /* The Millions - Portfolio manager.app */;
@@ -437,6 +440,7 @@
 			mainGroup = 71810FA527984B0D0039036A;
 			packageReferences = (
 				7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				7191826227D9FA9300A34695 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
 			);
 			productRefGroup = 71810FAF27984B0D0039036A /* Products */;
 			projectDirPath = "";
@@ -741,6 +745,14 @@
 				kind = branch;
 			};
 		};
+		7191826227D9FA9300A34695 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -748,6 +760,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
+		};
+		7191826327D9FA9300A34695 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7191826227D9FA9300A34695 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
+			productName = SwiftUIPullToRefresh;
 		};
 /* End XCSwiftPackageProductDependency section */
 

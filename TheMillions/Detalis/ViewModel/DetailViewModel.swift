@@ -5,8 +5,8 @@
 //  Created by Ryan J. W. Kim on 2022/01/23.
 //
 
-import Foundation
 import Combine
+import UIKit
 
 class DetailViewModel: ObservableObject {
     
@@ -108,5 +108,10 @@ class DetailViewModel: ObservableObject {
         ]
         
         return additionalArray
+    }
+    
+    func reloadData() {
+        coinDetailService.getCoinDetails()
+        UINotificationFeedbackGenerator().notificationOccurred(.warning)
     }
 }
