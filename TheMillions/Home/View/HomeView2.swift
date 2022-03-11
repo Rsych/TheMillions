@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct HomeView2: View {
     // MARK: - Properties

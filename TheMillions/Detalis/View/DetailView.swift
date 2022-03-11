@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUIPullToRefresh
+import PartialSheet
 
 struct DetailLoadingView: View {
     @Binding var coin: Coin?
@@ -21,6 +22,7 @@ struct DetailLoadingView: View {
                     .zIndex(1.0)
             }
         } //: ZStack
+        .attachPartialSheetToRoot()
     }
 }
 
@@ -63,8 +65,9 @@ struct DetailView: View {
             addButton
                 .offset(x: -10, y: 0)
         } //: ZStack
-        .sheet(isPresented: $showAddToPortfolio, content: {
-            DetailAddPortfolioView(coin: $selectedCoin)
+        .partialSheet(isPresented: $showAddToPortfolio, content: {
+            DetailAddPortfolioView(coin: $selectedCoin, showAddToPortfolio: $showAddToPortfolio)
+                
         })
         .navigationTitle(vm.coin.name)
         .toolbar {
@@ -80,15 +83,17 @@ struct DetailView: View {
     
 }
 
-
+// MARK: - Preview
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(coin: Coin.example)
+//            DetailView(coin: Coin.example)
+            DetailLoadingView(coin: .constant(Coin.example))
         }
     }
 }
 
+// MARK: - Extension
 extension DetailView {
     private var overViewTitle: some View {
         Text("Overview")
