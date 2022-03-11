@@ -20,7 +20,6 @@ struct DetailLoadingView: View {
                 DetailView(coin: coin)
                     .zIndex(1.0)
             }
-            
         } //: ZStack
     }
 }
@@ -44,17 +43,6 @@ struct DetailView: View {
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            //            RefreshableScrollView(onRefresh: { done in
-            //                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            //                    vm.reloadData()
-            //                    done()
-            //                }
-            //            }, progress: { state in // HERE
-            //                RefreshActivityIndicator(isAnimating: state == .primed || state == .loading) {
-            //                    $0.hidesWhenStopped = true }
-            //            }) {
-            //                // content here
-            //            } //: RefreshableScrollView
             ScrollView {
                 VStack {
                     LineChartView(coin: vm.coin)
@@ -62,9 +50,7 @@ struct DetailView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         overViewTitle
                         Divider()
-                        
                         description
-                        
                         overViewGrid
                         additionalTitles
                         Divider()
@@ -76,7 +62,7 @@ struct DetailView: View {
             } //: ScrollView
             addButton
                 .offset(x: -10, y: 0)
-        }
+        } //: ZStack
         .sheet(isPresented: $showAddToPortfolio, content: {
             DetailAddPortfolioView(coin: $selectedCoin)
         })
@@ -85,8 +71,8 @@ struct DetailView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 navTrailingItem
             }
-        }
-    }
+        } //: Toolbar
+    } //: Body
     private func segue(coin: Coin) {
         selectedCoin = coin
         showAddToPortfolio.toggle()
@@ -192,3 +178,16 @@ extension DetailView {
         }
     }
 }
+
+// MARK: - RefreshableScrollView if needed
+//            RefreshableScrollView(onRefresh: { done in
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                    vm.reloadData()
+//                    done()
+//                }
+//            }, progress: { state in // HERE
+//                RefreshActivityIndicator(isAnimating: state == .primed || state == .loading) {
+//                    $0.hidesWhenStopped = true }
+//            }) {
+//                // content here
+//            } //: RefreshableScrollView
