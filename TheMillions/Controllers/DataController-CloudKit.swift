@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 
-extension PortfolioDataService {
+extension DataController {
     func uploadToiCloud(_ portfolio: Portfolio) {
         let records = portfolio.prepareCloudRecords()
         let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class PortfolioDataService {
+class DataController: ObservableObject {
     
     private let container: NSPersistentCloudKitContainer
     private let containerName: String = "Portfolio"

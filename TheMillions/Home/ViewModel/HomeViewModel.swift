@@ -21,7 +21,7 @@ class HomeViewModel: ObservableObject {
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
-    private let portfolioDataService = PortfolioDataService()
+    private let dataController = DataController()
     private var cancellable = Set<AnyCancellable>()
     
     enum SortOption {
@@ -47,7 +47,7 @@ class HomeViewModel: ObservableObject {
         
         // Update PortfolioCoins
         $allCoins
-            .combineLatest(portfolioDataService.$savedEntities)
+            .combineLatest(dataController.$savedEntities)
             .map(mapPortfolio)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] returnedCoin in
@@ -69,7 +69,7 @@ class HomeViewModel: ObservableObject {
     } //: Subscriber
     
     func updatePortfolio(coin: Coin, amount: Double) {
-        portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+        dataController.updatePortfolio(coin: coin, amount: amount)
     }
     private func filterAndSortCoins(text: String, coins: [Coin], sort: SortOption) -> [Coin] {
         var filteredSortedCoins = filterCoins(text: text, coins: coins)

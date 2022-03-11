@@ -12,7 +12,7 @@
 		7113A3F2279EA3700034A1AB /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3EE279EA3700034A1AB /* MailView.swift */; };
 		7113A3F3279EA3700034A1AB /* CustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3EF279EA3700034A1AB /* CustomizationView.swift */; };
 		7113A3F4279EA3700034A1AB /* SystemThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F0279EA3700034A1AB /* SystemThemeManager.swift */; };
-		7113A3F7279EA3D70034A1AB /* Settings-Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */; };
+		7113A3F7279EA3D70034A1AB /* DataController-Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F6279EA3D70034A1AB /* DataController-Settings.swift */; };
 		7113A3FB279EA4630034A1AB /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */; };
 		7113A3FC279EA4630034A1AB /* LockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FA279EA4630034A1AB /* LockedView.swift */; };
 		7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */; };
@@ -40,8 +40,8 @@
 		7181CA4127DB9E2000867ACF /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 7181CA4027DB9E2000867ACF /* PartialSheet */; };
 		71843BC8279ADEF3007F70F0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71843BC7279ADEF3007F70F0 /* CloudKit.framework */; };
 		71843BCB279ADF2E007F70F0 /* Portfolio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71843BC9279ADF2E007F70F0 /* Portfolio.xcdatamodeld */; };
-		71843BCD279ADFA3007F70F0 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BCC279ADFA3007F70F0 /* PortfolioDataService.swift */; };
-		71843BCF279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BCE279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift */; };
+		71843BCD279ADFA3007F70F0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BCC279ADFA3007F70F0 /* DataController.swift */; };
+		71843BCF279AE912007F70F0 /* DataController-CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BCE279AE912007F70F0 /* DataController-CloudKit.swift */; };
 		71843BD1279AEA1E007F70F0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BD0279AEA1E007F70F0 /* CoreDataHelper.swift */; };
 		71902DCF279C66CF00A107C9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DCE279C66CF00A107C9 /* DetailView.swift */; };
 		71902DD1279D660300A107C9 /* CoinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71902DD0279D660300A107C9 /* CoinDetail.swift */; };
@@ -73,7 +73,7 @@
 		7113A3EE279EA3700034A1AB /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		7113A3EF279EA3700034A1AB /* CustomizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizationView.swift; sourceTree = "<group>"; };
 		7113A3F0279EA3700034A1AB /* SystemThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemThemeManager.swift; sourceTree = "<group>"; };
-		7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings-Controller.swift"; sourceTree = "<group>"; };
+		7113A3F6279EA3D70034A1AB /* DataController-Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Settings.swift"; sourceTree = "<group>"; };
 		7113A3F9279EA4630034A1AB /* AppLockViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		7113A3FA279EA4630034A1AB /* LockedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockedView.swift; sourceTree = "<group>"; };
 		7113A3FD279EA4900034A1AB /* NavigationBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		71810FD92798831F0039036A /* Bundle-Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Version.swift"; sourceTree = "<group>"; };
 		71843BC7279ADEF3007F70F0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		71843BCA279ADF2E007F70F0 /* Portfolio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Portfolio.xcdatamodel; sourceTree = "<group>"; };
-		71843BCC279ADFA3007F70F0 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
-		71843BCE279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PortfolioDataservice-CloudKit.swift"; sourceTree = "<group>"; };
+		71843BCC279ADFA3007F70F0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		71843BCE279AE912007F70F0 /* DataController-CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-CloudKit.swift"; sourceTree = "<group>"; };
 		71843BD0279AEA1E007F70F0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		71902DCE279C66CF00A107C9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		71902DD0279D660300A107C9 /* CoinDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetail.swift; sourceTree = "<group>"; };
@@ -147,7 +147,9 @@
 		7113A3F5279EA3CA0034A1AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7113A3F6279EA3D70034A1AB /* Settings-Controller.swift */,
+				71843BCC279ADFA3007F70F0 /* DataController.swift */,
+				7113A3F6279EA3D70034A1AB /* DataController-Settings.swift */,
+				71843BCE279AE912007F70F0 /* DataController-CloudKit.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -364,8 +366,6 @@
 				71E897F7279891EB00BCEB89 /* CoinDataService.swift */,
 				71E898002798B74B00BCEB89 /* CoinImageService.swift */,
 				71C9380F279A148D003B3235 /* MarketDataService.swift */,
-				71843BCC279ADFA3007F70F0 /* PortfolioDataService.swift */,
-				71843BCE279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift */,
 				71843BD0279AEA1E007F70F0 /* CoreDataHelper.swift */,
 				71902DD4279D683A00A107C9 /* CoinDetailService.swift */,
 			);
@@ -482,7 +482,7 @@
 				7113A3FE279EA4900034A1AB /* NavigationBackButton.swift in Sources */,
 				71902DD5279D683A00A107C9 /* CoinDetailService.swift in Sources */,
 				7191826127D9D50200A34695 /* DetailAddPortfolioView.swift in Sources */,
-				71843BCF279AE912007F70F0 /* PortfolioDataservice-CloudKit.swift in Sources */,
+				71843BCF279AE912007F70F0 /* DataController-CloudKit.swift in Sources */,
 				71810FB427984B0D0039036A /* ContentView.swift in Sources */,
 				71810FC827984F480039036A /* HomeView.swift in Sources */,
 				7113A405279F36190034A1AB /* LaunchView.swift in Sources */,
@@ -502,7 +502,7 @@
 				71810FC127984D330039036A /* Color.swift in Sources */,
 				71C9380C279A08E6003B3235 /* HomeStatsView.swift in Sources */,
 				7113A400279EAA510034A1AB /* AppDelegate.swift in Sources */,
-				7113A3F7279EA3D70034A1AB /* Settings-Controller.swift in Sources */,
+				7113A3F7279EA3D70034A1AB /* DataController-Settings.swift in Sources */,
 				71E897FC27989E7100BCEB89 /* NetworkManager.swift in Sources */,
 				71902DD3279D680F00A107C9 /* DetailViewModel.swift in Sources */,
 				711CAE562799577300445A98 /* SearchBarView.swift in Sources */,
@@ -524,7 +524,7 @@
 				7113A3F3279EA3700034A1AB /* CustomizationView.swift in Sources */,
 				71843BD1279AEA1E007F70F0 /* CoreDataHelper.swift in Sources */,
 				71C93812279A19A6003B3235 /* PortfolioView.swift in Sources */,
-				71843BCD279ADFA3007F70F0 /* PortfolioDataService.swift in Sources */,
+				71843BCD279ADFA3007F70F0 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
