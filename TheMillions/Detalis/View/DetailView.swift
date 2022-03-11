@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUIPullToRefresh
+import PartialSheet
 
 struct DetailLoadingView: View {
     @Binding var coin: Coin?
@@ -21,6 +22,7 @@ struct DetailLoadingView: View {
                     .zIndex(1.0)
             }
         } //: ZStack
+        .attachPartialSheetToRoot()
     }
 }
 
@@ -63,8 +65,9 @@ struct DetailView: View {
             addButton
                 .offset(x: -10, y: 0)
         } //: ZStack
-        .sheet(isPresented: $showAddToPortfolio, content: {
+        .partialSheet(isPresented: $showAddToPortfolio, content: {
             DetailAddPortfolioView(coin: $selectedCoin)
+                
         })
         .navigationTitle(vm.coin.name)
         .toolbar {

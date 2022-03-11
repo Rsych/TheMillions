@@ -37,6 +37,7 @@
 		71810FD52798816E0039036A /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD42798816E0039036A /* Double.swift */; };
 		71810FD8279882010039036A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD7279882010039036A /* Constants.swift */; };
 		71810FDA2798831F0039036A /* Bundle-Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71810FD92798831F0039036A /* Bundle-Version.swift */; };
+		7181CA4127DB9E2000867ACF /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 7181CA4027DB9E2000867ACF /* PartialSheet */; };
 		71843BC8279ADEF3007F70F0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71843BC7279ADEF3007F70F0 /* CloudKit.framework */; };
 		71843BCB279ADF2E007F70F0 /* Portfolio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71843BC9279ADF2E007F70F0 /* Portfolio.xcdatamodeld */; };
 		71843BCD279ADFA3007F70F0 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71843BCC279ADFA3007F70F0 /* PortfolioDataService.swift */; };
@@ -135,6 +136,7 @@
 			files = (
 				71843BC8279ADEF3007F70F0 /* CloudKit.framework in Frameworks */,
 				7113A3EC279EA30A0034A1AB /* BetterSafariView in Frameworks */,
+				7181CA4127DB9E2000867ACF /* PartialSheet in Frameworks */,
 				7191826427D9FA9300A34695 /* SwiftUIPullToRefresh in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +411,7 @@
 			packageProductDependencies = (
 				7113A3EB279EA30A0034A1AB /* BetterSafariView */,
 				7191826327D9FA9300A34695 /* SwiftUIPullToRefresh */,
+				7181CA4027DB9E2000867ACF /* PartialSheet */,
 			);
 			productName = TheMillions;
 			productReference = 71810FAE27984B0D0039036A /* The Millions - Portfolio manager.app */;
@@ -441,6 +444,7 @@
 			packageReferences = (
 				7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				7191826227D9FA9300A34695 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
+				7181CA3F27DB9E2000867ACF /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 71810FAF27984B0D0039036A /* Products */;
 			projectDirPath = "";
@@ -745,6 +749,14 @@
 				kind = branch;
 			};
 		};
+		7181CA3F27DB9E2000867ACF /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7191826227D9FA9300A34695 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
@@ -760,6 +772,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7113A3EA279EA30A0034A1AB /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
+		};
+		7181CA4027DB9E2000867ACF /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7181CA3F27DB9E2000867ACF /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
 		};
 		7191826327D9FA9300A34695 /* SwiftUIPullToRefresh */ = {
 			isa = XCSwiftPackageProductDependency;
