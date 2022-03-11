@@ -66,7 +66,7 @@ struct DetailView: View {
                 .offset(x: -10, y: 0)
         } //: ZStack
         .partialSheet(isPresented: $showAddToPortfolio, content: {
-            DetailAddPortfolioView(coin: $selectedCoin)
+            DetailAddPortfolioView(coin: $selectedCoin, showAddToPortfolio: $showAddToPortfolio)
                 
         })
         .navigationTitle(vm.coin.name)
@@ -83,15 +83,17 @@ struct DetailView: View {
     
 }
 
-
+// MARK: - Preview
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailView(coin: Coin.example)
+//            DetailView(coin: Coin.example)
+            DetailLoadingView(coin: .constant(Coin.example))
         }
     }
 }
 
+// MARK: - Extension
 extension DetailView {
     private var overViewTitle: some View {
         Text("Overview")
