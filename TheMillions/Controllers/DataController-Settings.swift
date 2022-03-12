@@ -10,7 +10,7 @@ import UIKit
 import StoreKit
 import UserNotifications
 
-class DataController: ObservableObject {
+extension DataController {
     /// Requests review right away!
     func showReview() {
         let allScenes = UIApplication.shared.connectedScenes
