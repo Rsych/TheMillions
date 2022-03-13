@@ -11,6 +11,7 @@ import PartialSheet
 
 struct DetailLoadingView: View {
     @Binding var coin: Coin?
+    @EnvironmentObject private var vm: HomeViewModel
     init(coin: Binding<Coin?>) {
         _coin = coin
     }
@@ -19,6 +20,7 @@ struct DetailLoadingView: View {
         ZStack {
             if let coin = coin {
                 DetailView(coin: coin)
+                    .environmentObject(vm)
                     .zIndex(1.0)
             }
         } //: ZStack
@@ -30,6 +32,7 @@ struct DetailView: View {
     // MARK: - Properties
     @StateObject private var vm: DetailViewModel
     @State private var showMore = false
+    @EnvironmentObject private var homeVM: HomeViewModel
     
     @State private var selectedCoin: Coin? = nil
     @State private var showAddToPortfolio = false
@@ -67,6 +70,7 @@ struct DetailView: View {
         } //: ZStack
         .partialSheet(isPresented: $showAddToPortfolio, content: {
             DetailAddPortfolioView(coin: $selectedCoin, showAddToPortfolio: $showAddToPortfolio)
+                .environmentObject(homeVM)
                 
         })
         .navigationTitle(vm.coin.name)

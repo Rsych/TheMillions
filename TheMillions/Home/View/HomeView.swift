@@ -116,6 +116,7 @@ struct HomeView: View {
         .background(
             NavigationLink(isActive: $showDetailView, destination: {
                 DetailLoadingView(coin: $selectedCoin)
+                    .environmentObject(vm)
             }, label: {
                 EmptyView()
             })
