@@ -69,6 +69,12 @@ class DataController: ObservableObject {
         }
     }
     
+    func deletePortfolio(coin: Coin) {
+        if let entity = savedEntities.first(where: {$0.coinID == coin.id}) {
+            delete(entity: entity)
+        }
+    }
+    
     private func getPortfolio() {
         let request = NSFetchRequest<Portfolio>(entityName: entityName)
         do {

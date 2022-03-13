@@ -30,6 +30,8 @@ struct DetailAddPortfolioView: View {
             }
             
             doneButton
+            
+
         }
         .padding()
         .onAppear(perform: {
@@ -65,6 +67,12 @@ struct DetailAddPortfolioView: View {
         UIApplication.shared.endEditing()
         print(coin.id)
         print(amount)
+    }
+    func deleteCoin() {
+        guard let coin = selectedCoin else { return }
+        
+        vm.deleteCoinFromPort(coin: coin)
+        print(coin.currentHoldings)
     }
 }
 // MARK: - Preview
@@ -140,6 +148,21 @@ extension DetailAddPortfolioView {
         }
     }
     private var addEmptyAmount: some View {
-        Text("Empty")
+        Form {
+            HStack {
+                Text("Amount to add")
+                Spacer()
+                TextField("Ex: 1.4", text: $quantyHoldings)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            } //: HStack
+            .padding()
+            HStack {
+                Text("Price")
+                Spacer()
+                Text(getCurrentValue().currencyTo6Digits())
+            } //: HStack
+            .padding()
+        }
     }
 }

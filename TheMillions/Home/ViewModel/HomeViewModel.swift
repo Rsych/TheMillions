@@ -71,6 +71,9 @@ class HomeViewModel: ObservableObject {
     func updatePortfolio(coin: Coin, amount: Double) {
         dataController.updatePortfolio(coin: coin, amount: amount)
     }
+    func deleteCoinFromPort(coin: Coin) {
+        dataController.deletePortfolio(coin: coin)
+    }
     private func filterAndSortCoins(text: String, coins: [Coin], sort: SortOption) -> [Coin] {
         var filteredSortedCoins = filterCoins(text: text, coins: coins)
         sortCoins(sort: sort, coins: &filteredSortedCoins)
