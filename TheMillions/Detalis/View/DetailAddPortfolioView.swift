@@ -22,12 +22,12 @@ struct DetailAddPortfolioView: View {
     var body: some View {
         VStack {
             assetDescription
-            editAmount
-//            if selectedCoin?.currentHoldings == nil {
-//
-//            } else {
-//
-//            }
+            
+            if selectedCoin?.currentHoldings != nil {
+                editAmount
+            } else {
+                addEmptyAmount
+            }
             
             doneButton
         }
@@ -48,7 +48,7 @@ struct DetailAddPortfolioView: View {
         }
     }
     private func getCurrentValue() -> Double {
-//        guard let currentHoldings = selectedCoin?.currentHoldings else { return 0.0 }
+        //        guard let currentHoldings = selectedCoin?.currentHoldings else { return 0.0 }
         if let amount = Double(quantyHoldings) {
             return amount * (selectedCoin?.currentPrice ?? 0)
         }
@@ -107,7 +107,7 @@ extension DetailAddPortfolioView {
         Button {
             showAddToPortfolio = false
             saveButtonPressed()
-
+            
         } label: {
             Text("Done")
                 .frame(maxWidth:.infinity)
@@ -123,20 +123,23 @@ extension DetailAddPortfolioView {
     
     private var editAmount: some View {
         Form {
-        HStack {
-            Text("Amount")
-            Spacer()
-            TextField("Ex: 1.4", text: $quantyHoldings)
-                .keyboardType(.decimalPad)
-                .multilineTextAlignment(.trailing)
-        } //: HStack
-        .padding()
-        HStack {
-            Text("Price")
-            Spacer()
-            Text(getCurrentValue().currencyTo6Digits())
-        } //: HStack
-        .padding()
+            HStack {
+                Text("Amount")
+                Spacer()
+                TextField("Ex: 1.4", text: $quantyHoldings)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            } //: HStack
+            .padding()
+            HStack {
+                Text("Price")
+                Spacer()
+                Text(getCurrentValue().currencyTo6Digits())
+            } //: HStack
+            .padding()
         }
+    }
+    private var addEmptyAmount: some View {
+        Text("Empty")
     }
 }
