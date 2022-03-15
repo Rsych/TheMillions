@@ -20,17 +20,27 @@ struct DetailAddPortfolioView: View {
     }
     // MARK: - Body
     var body: some View {
-        VStack {
-            assetDescription
+        ZStack {
+            Color(uiColor: .systemBackground)
+                .zIndex(0)
+                .onTapGesture {
+                    hideKeyboardWhenTappedAround()
+                }
             
-            if selectedCoin?.currentHoldings != nil {
-                editAmount
-            } else {
-                addEmptyAmount
+            VStack {
+                assetDescription
+                if selectedCoin?.currentHoldings != nil {
+                    editAmount
+                } else {
+                    addEmptyAmount
+                }
+                
+                doneButton
+                
+                
             }
-            
-            doneButton
         }
+        
         .padding()
         .onAppear(perform: {
             updateSelectedCoin(coin: selectedCoin!)
@@ -66,6 +76,12 @@ struct DetailAddPortfolioView: View {
         print(coin.id)
         print(amount)
     }
+    func deleteCoin() {
+        guard let coin = selectedCoin else { return }
+        
+        vm.deleteCoinFromPort(coin: coin)
+        print(coin.currentHoldings)
+    }
 }
 // MARK: - Preview
 struct DetailAddPortfolioView_Previews: PreviewProvider {
@@ -84,6 +100,11 @@ struct DetailAddPortfolioView_Previews: PreviewProvider {
 // MARK: - Extension
 
 extension DetailAddPortfolioView {
+    func hideKeyboardWhenTappedAround() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
+    
     private var assetDescription: some View {
         HStack {
             CoinLogoView(coin: selectedCoin!)
@@ -105,8 +126,11 @@ extension DetailAddPortfolioView {
     
     private var doneButton: some View {
         Button {
-            showAddToPortfolio = false
-            saveButtonPressed()
+            withAnimation(.easeIn) {
+                showAddToPortfolio = false
+                saveButtonPressed()
+            }
+            
             
         } label: {
             Text("Done")
@@ -140,6 +164,21 @@ extension DetailAddPortfolioView {
         }
     }
     private var addEmptyAmount: some View {
-        Text("Empty")
+        Form {
+            HStack {
+                Text("Amount to add")
+                Spacer()
+                TextField("Ex: 1.4", text: $quantyHoldings)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            } //: HStack
+            .padding()
+            HStack {
+                Text("Price")
+                Spacer()
+                Text(getCurrentValue().currencyTo6Digits())
+            } //: HStack
+            .padding()
+        }
     }
 }
