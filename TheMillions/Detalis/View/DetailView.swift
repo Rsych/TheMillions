@@ -33,6 +33,7 @@ struct DetailView: View {
     @StateObject private var vm: DetailViewModel
     @State private var showMore = false
     @EnvironmentObject private var homeVM: HomeViewModel
+//    @StateObject private var homeVM: HomeViewModel
     
     @State private var selectedCoin: Coin? = nil
     @State private var showAddToPortfolio = false
@@ -44,6 +45,7 @@ struct DetailView: View {
     
     init(coin: Coin) {
         _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
+//        _homeVM = StateObject(wrappedValue: HomeViewModel())
     }
     // MARK: - Body
     var body: some View {
@@ -93,6 +95,7 @@ struct DetailView_Previews: PreviewProvider {
         NavigationView {
 //            DetailView(coin: Coin.example)
             DetailLoadingView(coin: .constant(Coin.example))
+                .environmentObject(HomeViewModel())
         }
     }
 }

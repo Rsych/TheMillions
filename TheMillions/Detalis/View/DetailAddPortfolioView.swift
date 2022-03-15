@@ -20,19 +20,27 @@ struct DetailAddPortfolioView: View {
     }
     // MARK: - Body
     var body: some View {
-        VStack {
-            assetDescription
+        ZStack {
+            Color(uiColor: .systemBackground)
+                .zIndex(0)
+                .onTapGesture {
+                    hideKeyboardWhenTappedAround()
+                }
             
-            if selectedCoin?.currentHoldings != nil {
-                editAmount
-            } else {
-                addEmptyAmount
+            VStack {
+                assetDescription
+                if selectedCoin?.currentHoldings != nil {
+                    editAmount
+                } else {
+                    addEmptyAmount
+                }
+                
+                doneButton
+                
+                
             }
-            
-            doneButton
-            
-
         }
+        
         .padding()
         .onAppear(perform: {
             updateSelectedCoin(coin: selectedCoin!)
@@ -92,6 +100,11 @@ struct DetailAddPortfolioView_Previews: PreviewProvider {
 // MARK: - Extension
 
 extension DetailAddPortfolioView {
+    func hideKeyboardWhenTappedAround() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
+    
     private var assetDescription: some View {
         HStack {
             CoinLogoView(coin: selectedCoin!)
@@ -113,8 +126,11 @@ extension DetailAddPortfolioView {
     
     private var doneButton: some View {
         Button {
-            showAddToPortfolio = false
-            saveButtonPressed()
+            withAnimation(.easeIn) {
+                showAddToPortfolio = false
+                saveButtonPressed()
+            }
+            
             
         } label: {
             Text("Done")
