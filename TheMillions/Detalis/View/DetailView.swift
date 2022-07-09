@@ -68,7 +68,8 @@ struct DetailView: View {
                 } //: VStack
             } //: ScrollView
             addButton
-                .offset(x: -10, y: 0)
+//                .offset(x: -10, y: 0)
+                .offset(x: -30, y: -60)
         } //: ZStack
         .partialSheet(isPresented: $showAddToPortfolio, content: {
             DetailAddPortfolioView(coin: $selectedCoin, showAddToPortfolio: $showAddToPortfolio)

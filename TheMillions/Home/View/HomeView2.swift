@@ -62,12 +62,29 @@ struct HomeView2: View {
                     // MARK: - FloatingTabBar
                     FloatingTabBar(selected: $selectedTab)
                         .zIndex(1)
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            CircleButtonView(iconName: "plus")
+                                .animation(.none, value: 0)
+                                .onTapGesture {
+                                    showPortfolioView.toggle()
+                                }
+                                .background(CircleButtonAnimationView(animation: $showPortfolioStat))
+                                .offset(x: -30, y: -60)
+                        }
+                    }
                 } //: ZStack
                 
                 // MARK: - AppLock
                 .padding(.top)
             } else {
-                LockedView()
+                NavigationView {
+                    LockedView()
+                }
+                
             }
         } //: ZStack appLock
         .onAppear {
@@ -93,12 +110,6 @@ struct HomeView2: View {
 extension HomeView2 {
     private var homeHeader: some View {
         HStack {
-            CircleButtonView(iconName: "plus")
-                .animation(.none, value: 0)
-                .onTapGesture {
-                    showPortfolioView.toggle()
-                }
-                .background(CircleButtonAnimationView(animation: $showPortfolioStat))
             Spacer()
             Text(selectedTab == 0 ? "Portfolio" : "Live prices")
                 .font(.headline)
@@ -107,9 +118,8 @@ extension HomeView2 {
                 .transition(.slide)
                 .animation(.easeInOut, value: selectedTab)
             Spacer()
-            Spacer()
         }
-        .padding(.horizontal)
+        .padding([.horizontal, .bottom])
     }
     private func columnTitles(geo: GeometryProxy) -> some View {
         HStack {

@@ -36,8 +36,7 @@ struct DetailAddPortfolioView: View {
                 }
                 
                 doneButton
-                
-                
+                    .offset(y: -30)
             }
         }
         

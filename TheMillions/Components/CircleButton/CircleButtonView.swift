@@ -15,13 +15,13 @@ struct CircleButtonView: View {
         Image(systemName: iconName)
             .font(.headline)
             .foregroundColor(.theme.accent)
-            .frame(width: 50, height: 50)
-            .background(
-                Circle()
-                    .foregroundColor(.theme.background)
-            )
             .shadow(color: .theme.accent.opacity(0.2), radius: 10, x: 0, y: 0)
             .padding()
+            .background(
+                .ultraThinMaterial,
+                in: Circle()
+            )
+            .frame(width: 50, height: 50)
     }
 }
 
